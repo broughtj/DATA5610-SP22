@@ -2,7 +2,7 @@
 title: "Readings for DATA 5610"
 date: \today
 author: "Tyler J. Brough"
-bibliography: "data5600.bib"
+bibliography: "data5610.bib"
 link-citations: true
 urlcolor: "blue"
 csl: "https://raw.githubusercontent.com/citation-style-language/styles/master/harvard-anglia-ruskin-university.csl"
