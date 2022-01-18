@@ -1,0 +1,5 @@
+## The Auction Reserve Price Simulation Project {-}
+
+This is a placeholder for the keyword auction simulation project. More details to come.
+
+\pagebreak

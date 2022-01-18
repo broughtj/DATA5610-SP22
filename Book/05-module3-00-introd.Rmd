@@ -1,0 +1,5 @@
+# Module 3: Time Series Analysis {-}
+
+In this module we will cover the basics of time series analysis for predictive analytics. Time series analysis is a topic that every practicing data analyst must be familiar with. 
+
+\pagebreak

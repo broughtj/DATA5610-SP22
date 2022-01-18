@@ -1,0 +1,5 @@
+# Module 2: Supervised Learning {-}
+
+In this module we will cover the foundational topic of supervised learning in the context of classification and regression algorithms.
+
+\pagebreak

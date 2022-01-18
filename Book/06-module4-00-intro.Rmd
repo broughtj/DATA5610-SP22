@@ -1,0 +1,5 @@
+# Module 4: Reinforcement Learning {-}
+
+In this module we will be introduced the basic ideas of reinforcement learning through multi-armed bandit problems. This area of machine learning is explicitly related to the economics of decision making under conditions of uncertainty through the two subjects' common roots in game theory. 
+
+\pagebreak

@@ -1,0 +1,5 @@
+## The Stock Returns Prediction Project {-}
+
+This is a placeholder for the regression project that focuses on the process of model building and model selection for regression problems. More details to come.
+
+\pagebreak

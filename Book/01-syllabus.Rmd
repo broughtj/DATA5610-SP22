@@ -1,4 +1,4 @@
-# DATA 5610: Advanced Machine Learning for Analytics {-}
+# Syllabus {-}
 
 ## Course Information {-}
 
