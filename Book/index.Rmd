@@ -1,0 +1,19 @@
+--- 
+title: "DATA 5610: Advanced Machine Learning for Analytics"
+author: "Tyler J. Brough" 
+institute: "Utah State Univeristy"
+date: "`r Sys.Date()`"
+knit: "bookdown::render_book"
+documentclass: report
+bibliography: [book.bib, packages.bib, data5610.bib]
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+lot: yes
+lof: yes
+fontsize: 12pt
+---
+
+# Preface {-}
+
+Welcome to DATA 5610. 
