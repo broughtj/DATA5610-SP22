@@ -1,0 +1,4 @@
+# Module 1: Decision Theory {-}
+
+In this first module we establish the common roots of decision making under conditions of uncertainty in economics and statistics as way to frame and appreciate current developments in data science and machine learning.
+
