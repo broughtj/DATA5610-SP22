@@ -1,0 +1,9 @@
+---
+title: "Bayes' Estimators"
+author: "Tyler J. Brough"
+date: "2/14/2022"
+output: pdf_document
+---
+
+## 
+
