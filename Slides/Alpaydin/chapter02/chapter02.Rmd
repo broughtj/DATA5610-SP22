@@ -1,0 +1,131 @@
+---
+title: "Chapter 2: Supervised Learning" 
+author: Tyler J. Brough
+institute: Data Analytics & Information Systems
+titlegraphic: ./images/vertical-logo-blue.png
+fontsize: 10pt
+output:
+ beamer_presentation:
+    template: ./template.tex
+    keep_tex: false
+    toc: true
+ ioslides_presentation:
+    smaller: true
+---
+
+## Learning a Class from Examples
+
+* Class $C$ of a _"family car"
+   - **Prediction:** Is a car $x$ a family car?
+   - **Knowledge extraction:** What do people expect from a family car? 
+
+* Output:
+   - Positive ($+$) and negative ($-$) examples 
+
+* Input representation:
+   - $x_{1}:$ price, $x_{2}:$ engine power
+
+
+## Training set $\mathcal{X}$
+
+$$
+\mathcal{X} = \{\mathbf{x}^{t}, r^{t}\}_{t=1}^{N}
+$$
+
+\vspace{5mm}
+
+$$
+r = \begin{cases}
+     1, & \text{if } \mathbf{x} \text{ is positive} \\
+     0, & \text{if } \mathbf{x} \text{ is negative}
+    \end{cases} 
+$$
+
+\vspace{5mm}
+
+$$
+\begin{aligned}
+ \mathbf{x} &= \begin{bmatrix}
+                x_{1} \\
+                x_{2} \\
+               \end{bmatrix}
+\end{aligned}
+$$ 
+
+
+## Training set $\mathcal{X}$
+
+![Figure 2.1](images/Figure2-1.png)
+
+
+## Class C 
+
+![Figure 2.2](images/Figure2-2.png)
+
+
+## Hypothesis class $\mathcal{H}$
+
+$$
+h(\mathbf{x}) = \begin{cases}
+     1, & \text{if } h \text{ says } \mathbf{x} \text{ is positive} \\
+     0, & \text{if } h \text{ says } \mathbf{x} \text{ is negative}
+    \end{cases} 
+$$
+
+\vspace{10mm}
+
+$$
+E(h | \mathcal{X}) = \sum\limits_{t=1}^{N} 1(h(\mathbf{x}^{t}) \ne r^{t})
+$$
+
+
+## Hypothesis class $\mathcal{H}$
+
+![Figure 2.3](images/Figure2-3.png)
+
+
+## S, G, and the Version Space
+
+![Figure 2.4](images/Figure2-4.png)
+
+
+## Margin
+
+![Figure 2.5](images/Figure2-5.png)
+
+
+## VC Dimension
+
+* $N$ points can be labeled in $2^{N}$ ways as $+/-$
+
+* $\mathcal{H}$ shatters $N$ if there exists $h \in \mathcal{H}$ consistent for any of these: $VC(\mathcal{H}) = N$
+
+
+## VC Dimention
+
+![Figure 2.6](images/Figure2-6.png)
+
+
+## Probably Approximately Correct (PAC) Learning
+
+* How many training examples $N$ should we have, such that with $1 - \delta$, $h$ has __error at most__ $\epsilon$? (Blumer et al., 1998)
+
+* Each strip is at most $\epsilon / 4$
+
+* $Pr$ that we miss a strip $1 - \epsilon / 4$ 
+
+* $Pr$ that $N$ instances miss a strip $(1 - \epsilon / 4)^{N}$
+
+* $Pr$ that $N$ instances miss $4$ strips $4 (1 - \epsilon / 4)^{N}$
+
+* $4 (1 - \epsilon / 4)^{N} \le \delta$ and $(1 - x) \le \exp{(-x)}$
+
+* $4 \exp{(-\epsilon N / 4)} \le \delta$ and $N \ge (4/3) \log{(4/\delta)}$
+
+
+## PAC Learning
+
+![Figure 2.7](images/Figure2-7.png)
+
+
+

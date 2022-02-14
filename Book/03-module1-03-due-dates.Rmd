@@ -2,6 +2,16 @@
 
 \vspace{5mm}
 
-This is a placeholder. More details to come.
+### Due by February 4, 2022 {-}
+
+1. All readings for module 1 completed by this date
+
+2. Wiki-style article on some chosen subject from module 1
+
+3. St. Petersburg paradox simulation
+
+4. Annotated bibliography for module 1 journal articles
+
+
 
 \pagebreak

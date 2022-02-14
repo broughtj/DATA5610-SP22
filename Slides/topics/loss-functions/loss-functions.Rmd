@@ -1,0 +1,107 @@
+---
+title: "Loss Functions"
+author: "Tyler J. Brough"
+date: "1/19/2022"
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Another Look at OLS
+
+Suppose we are working with a model of the form
+
+$$
+y_{i} = \alpha + \beta x_{i}
+$$
+
+\vspace{7mm}
+
+
+* we have $n$ data points $(x_{i}, y_{i})$, for $i = 1, \ldots, n$
+
+* we seek to estimate estimate $\alpha$ and $\beta$.
+
+
+## The Loss Functions
+
+Our parameters are the following: $\theta = \{\alpha, \beta, \sigma\}$
+
+\vspace{5mm}
+
+Applying the least squares criterion implies the following loss function:
+
+$$
+\hat{\theta} = \arg\min_{\theta} \left[\sum\limits_{i=1}^{n} (y_{i} - \beta x_{i} - \alpha)^{2}\right]
+$$
+
+## The Solution
+
+A necessary condition for optimality is that the two partial derivatives  $\partial S / \partial \alpha$ and $\partial S / \partial \beta$ equal zero, giving us the following equations:
+
+\vspace{5mm}
+
+$$
+\begin{aligned}
+\frac{\partial S}{\partial \beta} &= -2 \sum\limits_{i=1}^{n} (y_{i} - \beta x_{i} - \alpha) x_{i} = 0 \\
+& \\
+\frac{\partial S}{\partial \alpha} &= -2 \sum\limits_{i=1}^{n} (y_{i} - \beta x_{i} - \alpha) = 0 \\
+\end{aligned}
+$$
+
+\vspace{5mm}
+
+Where $S = \sum\limits_{i=1}^{n} (y_{i} - \beta x_{i} - \alpha)^{2}$
+
+
+## The Solution Continued
+
+We can rewrite the above equations in the form of the __normal equations__ as follows:
+
+\vspace{5mm}
+
+$$
+\begin{aligned}
+\beta \sum\limits_{i=1}^{n} x_{i}^{2} + \alpha \sum\limits_{i=1}^{n} x_{i} &= \sum\limits_{i=1}^{n} x_{i} y_{i} \\
+& \\
+\beta \sum\limits_{i=1}^{n} x_{i} + n \alpha &= \sum\limits_{i=1}^{n} y_{i} \\
+\end{aligned}
+$$
+
+
+## The Solution Continued
+
+The normal equations can be solved for $\alpha$ and $\beta$ to yield the following:
+
+\vspace{5mm}
+
+$$
+\begin{aligned}
+\hat{\beta} &= \frac{n\sum x_{i}y_{i} - \sum x_{i} \sum y_{i}}{n\sum x_{i}^{2} - (\sum x_{i})^{2}}, \quad \mbox{the \textbf{slope}} \\
+& \\
+\hat{\alpha} & = \frac{\sum x_{i}^{2} \sum y_{i} - \sum x_{i} y_{i} \sum x_{i}}{n \sum x_{i}^{2} - (\sum x_{i})^{2}}, \quad \mbox{the \textbf{intercept}}
+\end{aligned}
+$$
+
+\vspace{5mm}
+
+* Thus the solution is available in closed-form
+
+* Given our data $(x_{i}, y_{i})_{i=1}^{n}$ we can simply plug-and-chug to get point estimates
+
+
+## OLS Revisited
+
+Thus the least squares approach uses the following loss function:
+
+\vspace{5mm}
+
+$$
+L(\theta) = S(\theta) = \arg\min_{\theta} \left[\sum\limits_{i=1}^{n} (y_{i} - \beta x_{i} - \alpha)^{2}\right]
+$$
+
+\vspace{10mm}
+
+\textbf{{\Large Is this the \textit{right} loss function?}}

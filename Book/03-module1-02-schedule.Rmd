@@ -10,10 +10,10 @@
 
 \vspace{5mm}
 
-### January 24, 2022 {-}
+### January 26, 2022 {-}
 
-- @Hayek1945a by `__`
+- @Hayek1945a by Jacob Needham
 
-- @Buchanan1964a by `__`
+- @Buchanan1964a by Wes Smith
 
 \pagebreak
