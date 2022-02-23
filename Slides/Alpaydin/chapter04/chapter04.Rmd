@@ -29,11 +29,25 @@ import matplotlib.pyplot as plt
 
 This notebook is based on the following sources: 
 
+\vspace{2mm}
+
 * _Chapter 4: Parametric Methods_ of _Introduction to Machine Learning_ by Alpaydin
 
 * _Chapter 9: Point Estimation_ of _Introduction to Probability and Mathematical Statistics_ 
 
 * _Chapter 2: General Matters_ of _Machine Learning: An Applied Mathematics Introduction_
+
+\vspace{2mm}
+
+See also:
+
+\vspace{2mm}
+
+* _Section 2.2.3 The Classification Setting_ of _Chapter 2: Statistical Learning_ of _An Introduction to Statistical Learning_
+
+* _Section 4.4 Generative Models for Classification_ of _Chapter 4: Classification_ of _An Introduction to Statistical Learning_
+
+* _Chapter 9: Statistical Pattern Recognition_ of _Computational Statistics Handbook with MATLAB_
 
 
 ## __Defintion of an Estimator__
@@ -603,6 +617,124 @@ print(f"The Informative MAP: {map_inf : 0.4f}")
 # __Section 4.5: Parametric Classification__
 
 
-## __Parametric Classification__
+## __Parametric Classification__ 
 
-Words...
+* Using Bayes' Rule we can write the probability of class $C_{i}$ as 
+
+$$
+p(C_{i} | x) = \frac{p(x | C_{i}) p(C_{i})}{p(x)} = \frac{p(x | C_{i}) p(C_{i})}{\sum_{k} p(x | C_{k}) p(C_{k})}
+$$
+
+\vspace{2mm}
+
+* We can use this as a discriminant function (where we just care about the numerator):
+
+$$
+\begin{aligned}
+g_{i}(x) &= p(x | C)_{i}) p(C_{i})              \\
+&                                               \\
+\mbox{\textbf{OR}}  &                           \\
+&                                               \\
+g_{i}(x) &= \log{P(x | C_{i})} + \log{p(C_{i})} \\
+\end{aligned}
+$$
+
+
+## __Parametric Classifier Continued__
+
+* If we can assume that $p(x | C_{i})$ are Normal then we will have the following likelihood:
+
+$$
+p(x | C_{i}) = \frac{1}{\sqrt{2\pi} \sigma} \exp{\left[-\frac{(x - \mu_{i})^{2}}{2 \sigma_{i}^{2}}\right]}
+$$
+
+\vspace{2mm}
+
+* The discriminant function then simplifies to the following:
+
+$$
+-\frac{1}{2}\log{2\pi} - \log{\sigma_{i}} - \frac{(x - \mu_{i})^{2}}{2 \sigma_{i}^{2}} + \log{p(C_{i})}
+$$
+
+
+## __An Example__
+
+* Imagine we are a car company selling $K$ different types of cars 
+
+* Let's assume that the only factor that affects a customer's choice of car is her annual income, denoted $x$
+
+* $p(C_{i})$ is the proportion of customers who buy car type $i$
+
+* If the annual income of car buyers can be approximated with a Normal distribution, then $p(x | C_{i})$ is Normal
+
+* The probability that a customer will purchase car type $i$  who has income $x$ will be $\mathcal{N}(\mu-{i}, \sigma_{i}^{2})$
+    - Where $\mu_{i}$ is the mean income of such customers
+    - And $\sigma_{i}$ is their income variance
+
+* Using this model, we could then make predictions about which type of car a given customer might purchase given their income 
+
+
+## 
+
+* We typically will not know $p(C_{i})$ nor $p(x | C_{i})$, so we will have to estimate them from sample data
+
+\vspace{2mm}
+
+* We can then plug our estimates into the discriminant function to make predictions 
+
+\vspace{2mm}
+
+* We are given the following sample
+
+$$
+\mathcal{X} = \{x_{j}, y_{j}\}_{j=1}^{N}
+$$
+
+\vspace{2mm}
+
+* Where $\mathit{x} \in \mathcal{R}$ is one-dimensional and $\mathbf{y} \in \{0, 1\}^{K}$, such that
+
+## 
+
+* For each class, the estimates for the means and variances are 
+
+$$
+\begin{aligned}
+m_{i} &= \frac{\sum_{j} \mathit{x}_{j} y_{i, j}}{\sum_{j} y_{i, j}} \\
+& \\
+s_{i}^{2} &= \frac{\sum_{j} (\mathit{x}_{j} - m_{i})^{2} y_{i, j}}{\sum_{j} y_{i, j}}
+\end{aligned}
+$$
+
+\vspace{2mm}
+
+* And the estimates for the priors are 
+
+$$
+\hat{p}(C_{i}) = \frac{1}{N} \sum_{j} y_{i, j}
+$$
+
+
+## 
+
+* Plugging these estimates into the discriminant function above gives us
+
+$$
+-\frac{1}{2}\log{2\pi} - \log{s_{i}} - \frac{(x - m_{i})^{2}}{2 s_{i}^{2}} + \log{\hat{p}(C_{i})}
+$$
+
+\vspace{2mm}
+
+* The first term can be dropped because it is common to all in $g_{i}(\mathit{x})$
+
+\vspace{2mm}
+
+* If the priors are equal, then they too can be dropped
+
+\vspace{2mm}
+
+* If, for some reason, variances are equal then $g_{i}(\mathit{x}) = -(\mathit{x} - m_{i})^{2}$, and 
+
+$$
+\mbox{Choose } C_{i} \mbox{ if } |\mathit{x} - m_{i}| = \min_{k} |\mathit{x} - m_{k}|
+$$
