@@ -1,0 +1,608 @@
+---
+title: "Chapter 4: Parametric Methods" 
+author: Tyler J. Brough
+institute: Data Analytics & Information Systems
+titlegraphic: ./images/vertical-logo-blue.png
+fontsize: 10pt
+output:
+ beamer_presentation:
+    template: ./template.tex
+    keep_tex: false
+    toc: true
+ ioslides_presentation:
+    smaller: true
+---
+
+```{r setup, include=FALSE}
+library(reticulate)
+use_python("/Users/tjb/anaconda3/bin/python")
+```
+
+```{python include=FALSE, eval=TRUE}
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+# __Section 4.1: Introduction__
+
+## __Introduction to Sources__
+
+This notebook is based on the following sources: 
+
+* _Chapter 4: Parametric Methods_ of _Introduction to Machine Learning_ by Alpaydin
+
+* _Chapter 9: Point Estimation_ of _Introduction to Probability and Mathematical Statistics_ 
+
+* _Chapter 2: General Matters_ of _Machine Learning: An Applied Mathematics Introduction_
+
+
+## __Defintion of an Estimator__
+
+\vspace{2mm}
+
+\noindent\rule{11cm}{2pt}
+
+\vspace{2mm}
+
+__Estimator__ $\quad$ $T = t(X_{1}, X_{2}, \ldots, X_{n})$, that is used to estimate the value
+of $\tau(\theta)$ is called an __estimator__ of $\tau(\theta)$, and an observed value of the statistic,
+$t = t(x_{1}, x_{2}, \ldots, x_{n})$, is called an __estimate__ of $\tau(\theta)$.
+
+\vspace{3mm}
+
+\noindent\rule{11cm}{2pt}
+
+
+# __Section 4.2: Maximum Likelihood Estimation__
+
+
+## __Likelihood Function__
+
+\vspace{2mm}
+
+\noindent\rule{11cm}{2pt}
+
+\vspace{2mm}
+
+__Likelihood Function__ $\quad$ The joint function of $n$ random variables $X_{1}, \ldots, X_{n}$ evaluated at 
+$x_{1}, \ldots, x_{n}$, say $f(x_{1}, \ldots, x_{n})$ is referred to as a __likelihood function.__ For
+fixed $x_{1}, \ldots, x_{n}$ the likelihood function is a function of $\theta$ and often is denoted by
+$L(\theta)$.
+
+\vspace{5mm}
+
+If $X_{1}, \ldots, X_{n}$ represents a random sample from $f(x; \theta)$, then
+
+\vspace{5mm}
+
+$$
+L(\theta) = f(x_{1}; \theta) \cdots f(x_{n}; \theta)
+$$
+
+\vspace{3mm}
+
+\noindent\rule{11cm}{2pt}
+
+
+## __Maximum Likelihood Estimator (MLE)__
+
+\vspace{2mm}
+
+\noindent\rule{11cm}{2pt}
+
+\vspace{2mm}
+
+__Maximum Likelihood Estimator__ $\quad$ Let $L(\theta) = f(x_{1}, \ldots, x_{n}; \theta), \theta \in \Omega$, be the joint pdf of $X_{1}, \ldots, X_{n}$. For a given set of observations, $(x_{1}, 
+\ldots, x_{n})$, a value $\hat{\theta}$ in $\Omega$ at which $L(\theta)$ is a maximum is called a __maximum likelihood estimator__ (MLE) of $\theta$. That is,
+$\hat{\theta}$ is a value of $\theta$ that satisfies
+
+\vspace{5mm}
+
+$$
+f(x_{1}, \ldots, x_{n}; \hat{\theta}) = \max_{\theta \in \Omega} f(x_{1}, \ldots, x_{n}; \theta)
+$$
+
+\vspace{3mm}
+
+\noindent\rule{11cm}{2pt}
+
+
+## MLE Continued
+
+* Notice that if each set of observations $(x_{1}, \ldots, x_{n})$ corresponds to a unique value of $\hat{\theta}$, then this procedure defines a function,
+$\hat{\theta} = t(x_{1}, \ldots, x_{n})$.
+
+* This same function, when applied to random sample, $\hat{\theta} = t(X_{1}, \ldots, X_{n})$,
+is called the __maximum likelihood estimator__, also denoted MLE.
+
+* Usually, the same notation, $\hat{\theta}$, is used for both the ML estimate and the ML estimator. 
+
+
+## MLE Continued
+
+In most cases, $L(\theta)$ represents the joint pdf of a random sample, although the maximum likelihood principle also applies to other cases such as sets of order statistics.
+
+\vspace{3mm}
+
+If $\Omega$ is an open interval, and if $L(\theta)$ is differentiable and assumes a maximum on $\Omega$, then the MLE will be a solution of the equation (maximum likelihood equation)
+
+\vspace{3mm}
+
+$$
+{\large \frac{d}{d\theta} L(\theta) = 0}
+$$
+
+
+## MLE Continued
+
+\vspace{4mm}
+
+* If one or more solutions to the above equation exist, then it should be verified which, if any, maximize $L(\theta)$ 
+
+* Note that any value of $\theta$ that maximizes $L(\theta$) also will maximize the log-likelihood, $\ln{[L(\theta)]}$
+
+* So for computational convenience the alternate form of the maximum likelihood equation will often be used
+
+\vspace{4mm}
+
+$$
+{\large \frac{d}{d\theta} \ln{[L(\theta)]} = 0}
+$$
+
+
+## __Example: Coin Tossing__
+
+\vspace{3mm}
+
+Suppose you toss a coin $n$ times and get $h$ heads. What is the probability, $p$, of tossing a head next time?
+
+\vspace{3mm}
+
+The probability of getting $h$ heads from $n$ tosses is, assuming that the tosses are independent,
+
+\vspace{3mm}
+
+$$
+{\large \frac{n!}{h!(n-h)!} p^{h} (1-p)^{n-h} = {n \choose h} p^{h} (1-p)^{n-h}}
+$$
+
+
+## MLE Coin Tossing Example Continued
+
+* Applying MLE is the same as maximizing this expression with respect to $p$. 
+
+* This likelihood function (without the coefficient in the front that is independent of $p$) is shown below for $n = 100$ and $h = 55$. 
+
+* There is a very obvious maximum:
+
+```{python include=FALSE, eval=TRUE}
+def likelihood(n, h, p):
+    return (p**h) * ((1-p)**(n-h))
+
+probs = np.linspace(start=0.01, stop=1.0, num=10_000)
+l = [likelihood(100, 55, p) for p in probs]
+```
+
+```{python include=TRUE, eval=TRUE, echo=FALSE}
+print(f"The MLE is: {probs[np.argmax(l)] : 0.2f}")
+```
+
+## MLE Coin Tossing Example Likelihood Function
+
+```{python include=FALSE, eval=TRUE}
+fig, ax = plt.subplots(nrows=1, ncols=1)
+ax.plot(probs, l, color="orange", lw=2.5)
+fig.suptitle("Likelihood (scaled)")
+fig.supxlabel("Likelihood versus Probability")
+fig.savefig('images/beta_like.png', bbox_inches='tight')
+```
+
+\begin{center}
+\includegraphics[height=8cm,width=10cm]{images/beta_like.png}
+\end{center}
+
+
+## Log-Likelihood 
+
+
+* Often with MLE when multiplying probabilities, as here, you will take the logarithm of the likelihood and maximize that. 
+
+* This doesn't change the maximizing value but it does stop you from having to multiply many small numbers, which is going to be problematic with finite precision. (Look at the scale of the numbers on the
+vertical axis in the figure.) 
+
+* Since the first part of this expression is independent of $p$ we maximize with respect to $p$
+
+\vspace{5mm}
+
+$$
+{\Large h \log{p} + (n - h) \log{(1-p)}}
+$$
+
+
+## Log-Likelihood Continued
+
+```{python include=FALSE, eval=TRUE}
+def loglikelihood(n, h, p):
+    return h * np.log(p) + (n - h) * np.log(1-p)
+probs = np.linspace(start=0.01, stop=0.99, num=10_000)
+ll = [loglikelihood(100, 55, p) for p in probs]
+
+fig, ax = plt.subplots(nrows=1, ncols=1) 
+ax.plot(probs, ll, color="orange", lw=2.5)
+fig.suptitle("Log-Likelihood (scaled)")
+fig.supxlabel("Log-Likelihood versus Probability")
+#plt.show()
+fig.savefig('images/beta_log_like.png', bbox_inches='tight')
+```
+
+\begin{center}
+\includegraphics[height=8cm,width=10cm]{images/beta_log_like.png}
+\end{center}
+
+
+## __The Solution__
+
+$$
+{\large
+\begin{aligned}
+\frac{d}{d \theta} \ln{[L(\theta)]} &= 0   \\
+                                    &      \\
+                                    &= \frac{h}{p} - \frac{(n-h)}{(1-p)} = 0 \\                 
+\end{aligned}
+}
+$$
+
+\vspace{5mm}
+
+The solution is 
+
+$$
+{\large p = \frac{h}{n}}
+$$
+
+\vspace{3mm}
+
+* We see that this is the sample mean $\bar{x} = \frac{1}{n} \sum\limits_{i=1}^{n} x_{i}$ for the binary random variable $x$.
+
+* For the case above ($n = 100$ and $h = 55$) we see that $\hat{p} = \frac{55}{100} = 0.55$.
+
+
+## __A Poisson Random Variable Example__
+
+Consider a random sample from a Poisson distribution, $X \sim POI(\theta)$. The likelihood function is
+
+\vspace{5mm}
+
+$$
+{\large L(\theta) = \prod\limits_{i=1}^{n} f(x_{i}; \theta) = \frac{\exp({-n\theta}) \theta^{\sum_{i=1}^{n} x_{i}}}{\prod\limits_{i=1}^{n} x_{i}!}}
+$$
+
+and the log-likelihood is
+
+\vspace{5mm}
+
+$$
+{\large \ln{[L(\theta)]} = -n\theta + \sum\limits_{i=1}^{n} x_{i} \ln{(\theta)} - \ln{\left(\prod\limits_{i=1}^{n} x_{i}!\right)}}
+$$
+
+
+## __The Maximum Likelihood Equation__
+
+$$
+{\large \frac{d}{d \theta} \ln{[L(\theta)]} = -n + \sum\limits_{i=1}^{n} \frac{x_{i}}{\theta} = 0}
+$$
+
+\vspace{5mm}
+
+which has the solution $\hat{\theta} = \sum\limits_{i=1}^{n} \frac{x_{i}}{n} = \bar{x}$. It is possible to verify that this is a maximum by use of the 
+second derivative,
+
+\vspace{5mm}
+
+$$
+{\large \frac{d^{2}}{d \theta^{2}} \ln{[L(\theta)]}= -\sum\limits_{i=1}^{n} \frac{x_{i}}{\theta^{2}} }
+$$
+
+\vspace{5mm}
+
+which is negative when evaluated at $\bar{x}$, $-n/\bar{x} < 0$.
+
+
+## __A Normal Random Variable Example__
+
+* Say we have draws from a normal distribution with unknown mean and standard deviation
+
+* That's two parameters 
+
+* The probability of drawing a number $x$ is
+
+\vspace{5mm}
+
+$$
+{\large p(x) = \frac{1}{\sqrt{2 \pi} \sigma} \exp{\left(- \frac{(x - \mu)^{2}}{2\sigma^{2}}\right)}}
+$$
+
+\vspace{5mm}
+
+* where $\mu$ is the mean and $\sigma$ the standard deviation which are both to be estimated.
+
+
+## The Log-Likelihood Function for a Normal R.V. 
+
+The log-likelihood is then
+
+\vspace{3mm}
+
+$$
+{\large \ln{(p(x))} = -\frac{1}{2} \ln{(2 \pi)} - \ln{(\sigma)} - \frac{1}{2\sigma^{2}} (x - \mu)^{2}}
+$$
+
+\vspace{3mm}
+
+If the draws are independent then after $N$ draws, $x_{n}$, the likelihood will be
+
+\vspace{3mm}
+
+$$
+p(x_{1})p(x_{2}) \cdots p(x_{N}) = \prod\limits_{n=1}^{N} p(x_{n})
+$$
+
+
+## The Log-Likelihood Function for a Normal R.V. Continued
+
+And so the log-likelihood function is
+
+\vspace{3mm}
+
+$$
+ln{\left(\prod\limits_{n=1}^{N} p(x_{n})\right)} = \sum\limits_{n=1}^{N} \ln{(p(x_{n}))}
+$$
+
+\vspace{3mm}
+
+This gives us a convenient form for the log-likelihood
+
+\vspace{3mm}
+
+$$
+-N \ln{(\sigma)} - \frac{1}{2\sigma^{2}} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2}
+$$
+
+\vspace{3mm}
+
+Any terms that do not contain the parameter of interest can be dropped.
+
+
+## The MLE Solution for a Normal R.V.
+
+* To find the MLE for $\mu$ you just differentiate with respect to $\mu$ and set to zero. 
+
+\vspace{3mm}
+
+$$
+\hat{\mu} = \frac{1}{N} \sum\limits_{n=1}^{N} x_{n}
+$$
+
+\vspace{3mm}
+
+* And differentiating with respect to $\sigma$ gives
+
+$$
+\hat{\sigma} = \frac{1}{N} \sum\limits_{n=1}^{N} (x_{n} - \mu)^{2}
+$$
+
+\vspace{3mm}
+
+* These results make eminent sense
+
+
+# __Section 4.3: Bias and Variance__
+
+## __Bias and Mean Squared Error__
+
+\vspace{3mm}
+
+\noindent\rule{11cm}{2pt}
+
+If $T$ is an estimator of $\tau(\theta)$, the the __bias__ is given by
+
+\vspace{5mm}
+
+$$
+b(T) = E(T) - \tau(\theta)
+$$
+
+\vspace{5mm}
+
+and the __mean squared error__ (MSE) of $T$ is given by
+
+\vspace{5mm}
+
+$$
+MSE(T) = E[T - \tau(\theta)]^{2}
+$$
+
+\vspace{5mm}
+
+\noindent\rule{11cm}{2pt}
+
+
+## __MSE__
+
+If $T$ is an estimator of $\tau(\theta)$, then 
+
+\vspace{2mm}
+
+$$
+MSE(T) = Var(T) + [b(T)]^{2}
+$$
+
+\vspace{2mm}
+
+__Proof__
+
+$$
+\begin{aligned}
+MSE(T) &= E[T - \tau(\theta)]^{2} \\
+       &= E[T - E(T) + E(T) - \tau(\theta)]^{2} \\
+       &= E[T - E(T)]^{2} + 2[E(T) - \tau(\theta)] \\
+       & \times [E(T) - E(T)] + [E(T) - \tau(\theta)]^{2} \\
+       &= Var(T) + [b(T)]^{2} 
+\end{aligned}
+$$
+
+
+# __Section 4.4: Bayes' Estimators__
+
+## Bayes' Estimator
+
+* Treat $\theta$ as a random variable with prior $p(\theta)$
+
+* Bayes' rule: $p(\theta | \mathcal{X}) = p(\mathcal{X} | \theta) p(\theta) / p(\mathcal{X})$
+
+* Full: $p(x | \mathcal{X}) = \int p(x | \theta) p(\theta | \mathcal{X}) d\theta$
+
+* Maximum a Posteriori (MAP):
+
+$$
+\hat{\theta}_{MAP} = \arg\max_{\theta} p(\theta | \mathcal{X})
+$$
+
+* Maximum likelihood (MLE): 
+
+$$
+\hat{\theta}_{MLE} = \arg\max_{\theta} p(\mathcal{X} | \theta)
+$$
+
+* Bayes':
+
+$$
+\hat{\theta}_{Bayes'} = E[\theta | \mathcal{X}] = \int \theta p(\theta | \mathcal{X}) d\theta
+$$
+
+
+## __MAP vs MLE Example__
+
+* Let's compare the MAP vs the MLE for a specific example
+
+* Let's look at artificial data generated from a binomial likelihood function
+
+\vspace{2mm}
+
+```{python include=TRUE, eval=TRUE}
+np.random.seed(123456789)
+theta = 0.85
+m = 20
+D = np.random.binomial(1, theta, m)
+```
+
+\vspace{2mm}
+
+* The MLE 
+
+```{python include=TRUE, eval=TRUE}
+mle = np.mean(D)
+print(f"The MLE is: {mle: 0.4f}")
+```
+
+
+## The Histogram of the Generated Data
+
+```{python include=FALSE, eval=TRUE}
+fig, ax = plt.subplots(nrows=1, ncols=1)
+ax.hist(D);
+#plt.show()
+fig.suptitle("Binomial Histogram")
+fig.savefig('images/binomial_hist.png', bbox_inches='tight')
+```
+
+\begin{center}
+\includegraphics[height=8cm,width=10cm]{images/binomial_hist.png}
+\end{center}
+
+
+
+## __MAP with a Flat Prior__
+
+
+\begin{center}
+\includegraphics[height=8cm,width=10cm]{images/MLE-vs-MAP_10_0.png}
+\end{center}
+
+
+## __The MAP Continued__
+
+```{python include=FALSE, eval=TRUE}
+## Use a "flat" (uninformative) prior
+a_prior = 1.0
+b_prior = 1.0
+```
+
+```{python include=TRUE, eval=TRUE}
+## Conjugate model will be Beta(a*, b*) via Bayes' Rule
+N1 = np.sum(D)
+N0 = m - N1
+a_post = a_prior + N1
+b_post = b_prior + N0
+a_post, b_post
+```
+
+
+## __The Posterior__
+
+\begin{center}
+\includegraphics[height=8cm,width=10cm]{images/MLE-vs-MAP_11_0.png}
+\end{center}
+
+
+## __The MAP Point Estimate__
+
+* We see that, at least for this prior, the MAP is identical to the MLE!
+
+\vspace{5mm}
+
+```{python include=TRUE, eval=TRUE}
+map = (a_post - 1.0) / (a_post + b_post - 2.0)
+print(f"The MAP is: {map : 0.4f}")
+```
+
+
+## __MAP with an Informative Prior: The Prior__
+
+* Let $\alpha = 85$ and $\beta = 15$
+
+\vspace{2mm}
+
+\begin{center}
+\includegraphics[height=6cm,width=8cm]{images/MLE-vs-MAP_15_0.png}
+\end{center}
+
+
+## __MAP with an Informative Prior: The Point Estimate__
+
+```{python include=FALSE, eval=TRUE}
+alpha = 85 
+beta = 15 
+```
+
+```{python include=TRUE, eval=TRUE}
+alpha_post = alpha + N1
+beta_post = beta + N0
+map_inf = (alpha_post - 1.0) / (alpha_post + beta_post - 2.0)
+print(f"The Informative MAP: {map_inf : 0.4f}")
+```
+
+
+## __MAP with an Informative Prior: The Posterior__
+
+\begin{center}
+\includegraphics[height=8cm,width=10cm]{images/MLE-vs-MAP_17_0.png}
+\end{center}
+
+
+# __Section 4.5: Parametric Classification__
+
+
+## __Parametric Classification__
+
+Words...
