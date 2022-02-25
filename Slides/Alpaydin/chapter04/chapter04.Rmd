@@ -667,7 +667,7 @@ $$
 
 * If the annual income of car buyers can be approximated with a Normal distribution, then $p(x | C_{i})$ is Normal
 
-* The probability that a customer will purchase car type $i$  who has income $x$ will be $\mathcal{N}(\mu-{i}, \sigma_{i}^{2})$
+* The probability that a customer will purchase car type $i$  who has income $x$ will be $\mathcal{N}(\mu_{i}, \sigma_{i}^{2})$
     - Where $\mu_{i}$ is the mean income of such customers
     - And $\sigma_{i}$ is their income variance
 
