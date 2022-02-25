@@ -631,7 +631,7 @@ $$
 
 $$
 \begin{aligned}
-g_{i}(x) &= p(x | C)_{i}) p(C_{i})              \\
+g_{i}(x) &= p(x | C_{i}) p(C_{i})               \\
 &                                               \\
 \mbox{\textbf{OR}}  &                           \\
 &                                               \\
