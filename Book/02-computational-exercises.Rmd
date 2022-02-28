@@ -229,4 +229,35 @@ Structure your solution to the game such that the player can parameterize the nu
 See _Chapter 7: Uncertainty_ in @Nicholson2012 for more details.
 
 
+\newpage
+
+
+## Monte Carlo Comparison of MLE & MAP Estimators {-}
+
+In this exercise you will compare maximum likelihood estimation to maximum a posteriori estimation in three different scenarios. 
+
+1. The Beta-Binomial conjugate model
+    - Select a value of $\theta$ (the "true" Bernoulli probability of success) that is not "fair"
+    - Derive the maximum likelihood estimator 
+    - Derive the maximum a posteriori estimator
+    - Choose an "informative" prior 
+    - Set $M = 100,000$ and simulate a dataset with $N = 50$
+    - Estimate each model and store the estimate
+    - Make tables and histograms to compare the sampling distributions of each estimator
+    - Describe the results verbally
+
+2. The Gamma-Poisson conjugate model
+    - Repeat the above for this model 
+    - What is the MLE? 
+    - What is your prior?
+
+3. The Normal-Normal conjugate model
+    - Repeat the above for this model
+    - Assume a fixed and known value for $\sigma$ (_is this realistic?_)
+    - What is the MLE?
+    - What is your prior? 
+
+
+\newpage
+
 
