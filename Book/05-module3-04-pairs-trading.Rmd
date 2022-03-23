@@ -1,5 +1,0 @@
-## The Pairs Trading Project {-}
-
-This is a placeholder for the pairs trading project based on cointegration and error-correction models. More details to come.
-
-\pagebreak

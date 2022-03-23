@@ -1,5 +1,25 @@
 ## The Titanic Classification Project {-}
 
-This is a placeholder for the Kaggle Titanic project. More details to come.
+\vspace{5mm}
+
+### Project Description {-}
+
+In this project you will work with the Kaggle Titanic dataset. Your assignment is to 
+build a classification model to predict which passengers survived the infamous Titanic
+Shipwreck. 
+
+\vspace{3mm}
+
+You should test the several different classification methods that you have learned in this
+class (naive Bayes, logit/probit regression, tree-based methods, xgboost, deep learning,
+etc) to find the most accurate model possible. Your deliverable is a Jupyter notebook with
+Python code that carries out the training, testing, and comparison of your models. You should
+list not just the classification methods you used, but also the features that you included 
+to make your predictions. You should make tables of your results in your document and write
+several paragraphs of prose to explain the results.
+
+\vspace{3mm}
+
+See here for a description of the [Titanic Kaggle competition](https://www.kaggle.com/competitions/titanic/overview)
 
 \pagebreak

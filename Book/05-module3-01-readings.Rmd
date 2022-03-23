@@ -4,12 +4,22 @@
 
 ### Textbook Readings {-}
 
-Please read the chapters from the different sources listed below. All of these sources are available on the course Canvas Files page.
+- Chapters 10, 11, and 18 of the Wooldridge textbook
 
-\vspace{10mm}
+- Brough time series notes I - V (this booklet)
 
-### Academic Journal Articles {-}
+\vspace{8mm}
 
-Please prepare an entry in your annotated bibliography for each of the following articles.
+### Academic Articles {-}
+
+Please read the following and create entries for them in your annotated bibliographies.
+
+- @Murray1994
+
+- @GutierrezTse2011
+
+- @Hansen2005
+
+- @SullivanTimmermannWhite1999
 
 \pagebreak
