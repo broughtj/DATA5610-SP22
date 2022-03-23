@@ -2,6 +2,19 @@
 
 \vspace{5mm}
 
-This is a placeholder. More details to come.
+### Due by April 23, 2022 {-}
+
+1. The pairs programming project results and write-up.
+
+\vspace{5mm}
+
+### Due by May 7, 2022 {-}
+
+1. Annotated bibliographies for module 3.
+
+2. The stock returns prediction final project results and write-up.
+
+3. All other work that you would like to hand in for the final time.
+
 
 \pagebreak

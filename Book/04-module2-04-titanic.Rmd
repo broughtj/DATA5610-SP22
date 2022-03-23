@@ -22,4 +22,12 @@ several paragraphs of prose to explain the results.
 
 See here for a description of the [Titanic Kaggle competition](https://www.kaggle.com/competitions/titanic/overview)
 
+\vspace{3mm}
+
+You may find the following chapters and sections of chapters helpful: 
+
+- Chapters 2.2, 4.5, and 5 from @JamesEtAl2013
+
+- Chapters 3, 4, and 11 from @KuhnJohnson2013 
+
 \pagebreak

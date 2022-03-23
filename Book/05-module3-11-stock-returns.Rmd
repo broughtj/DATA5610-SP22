@@ -1,0 +1,31 @@
+## The Stock Returns Prediction Project {-}
+
+\vspace{5mm}
+
+### Project Description {-}
+
+This is your final project for the course. It is based on _Chapter 6: Model Selection_
+in @ElliottTimmermann2013. You will use the stock return prediction dataset linked
+below from the paper @WelchGoyal2008. See in particular Table 6.2 in @ElliottTimmermann2013.
+Your task is to reproduce this table (with modifications that we will discuss in class).
+The assignment is to come up with a model that has the optimal predictive power. 
+
+\vspace{3mm}
+
+In addition the methods discussed in Chapter 6 above, you will need to implement the _Superior
+Predictive Test_ (SPA) due to @Hansen2005. You will reproduce the SPA analysis for power utility
+investors with $\gamma = (2, 5, 9)$. See the Chapter 8 of @LjungqvistSargent2018 for the specification of
+the power utility function.
+
+\vspace{3mm}
+
+The deliverable for the project will be a zip drive with code files, data files, and a final write-up that 
+explains your results. Your results must be reproducible. 
+
+\vspace{3mm}
+
+- See here for the original [Welch and Goyal](https://drive.google.com/file/d/1T0pCslc2vxMDt7EFGI0MJ6mndeQvObBT/view?usp=sharing) dataset. 
+
+- See here for the [Welch and Goyal](https://drive.google.com/file/d/1uvjBJ9D09T0_sp7kQppWpD-xelJ0KQhc/view?usp=sharing) paper.  
+
+\pagebreak

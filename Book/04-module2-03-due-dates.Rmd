@@ -2,6 +2,16 @@
 
 \vspace{5mm}
 
-This is a placeholder. More details to come.
+### Due by April 9, 2022 {-}
+
+1. All readings for module 2 completed by this date
+
+2. Wiki-style article on some chosen subject from module 2
+
+3. The Monte Carlo comparison of MLE & MAP estimators 
+
+4. Annotated bibliography for module 2 journal articles
+
+5. The Titanic classification project results and write-up
 
 \pagebreak

@@ -6,7 +6,7 @@
 
 This project is based on the research article *Illuminating the
 Profitability of Pairs Trading: A Test of the Relative Pricing
-Efficiency of Markets for Water Utility Stocks* by Gutierrez and Tse
+Efficiency of Markets for Water Utility Stocks* by @GutierrezTse2011
 (GT). GT examine the profitability of the basic pairs trading strategy.
 This strategy relies on identifying pairs of assets that are
 cointegrated. GT study stocks in the water utility industry in the hopes
