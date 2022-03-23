@@ -2,6 +2,14 @@
 
 \vspace{5mm}
 
-This is a placeholder. More details to come. 
+### Who Has What {-}
+
+- @NgJordan2001 (Ma'ata Burkhart)
+
+- @Breiman2001  (Tyler Clayson)
+
+- @Shmueli2010 (Connor Hoiland)
+
+- @Rubin1984 (Brian Kissmer) 
 
 \pagebreak
