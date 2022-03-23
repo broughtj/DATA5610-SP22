@@ -8,6 +8,7 @@
 
 - Brough time series notes I - V (this booklet)
 
+- Chapter 5 in @ChernickLaBudde2014 
 \vspace{8mm}
 
 ### Academic Articles {-}
