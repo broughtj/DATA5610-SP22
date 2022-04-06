@@ -50,7 +50,7 @@ With the same null hypothesis. Notice that the null hypothesis is that there is 
 
 We used the`adf.test` in the `tseries` library in R to operationalize this. It reports a $p$-value. 
 
-```{R}
+```{R, include=TRUE, eval=FALSE}
 library(tseries)
 
 # simulate a random walk
