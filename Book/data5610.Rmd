@@ -1,0 +1,3000 @@
+--- 
+title: "DATA 5610: Advanced Machine Learning for Analytics"
+author: "Tyler J. Brough" 
+institute: "Utah State Univeristy"
+date: "`r Sys.Date()`"
+knit: "bookdown::render_book"
+documentclass: report
+bibliography: [book.bib, packages.bib, data5610.bib]
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+lot: yes
+lof: yes
+fontsize: 12pt
+---
+
+# Preface {-}
+
+Welcome to DATA 5610. 
+
+<!--chapter:end:index.Rmd-->
+
+# About the Author {-}
+
+Tyler J. Brough is an Associate Professor of Data Analytics & Information Systems in the Huntsman School of Business at Utah State University. He is also the Academic Director of the Analytics Solutions Center (ASC). Additionally, he is an Adjust Associate Professor of Economics & Finance.
+
+In 2010 he completed a Ph.D. in Finance at the University of Arizona. Before that he completed an undergraduate degree in Economics at Brigham Young University, as well as a masters degree in Finance at the University of Illinois at Urbana-Champaign.
+
+He has taught courses at USU in investments, corporate finance, econometrics, derviatives markets, computational finance, financial econometrics, and statistics. He currently teaches courses in machine learning and data analytics in the DAIS Department. 
+
+<!--chapter:end:00-author.Rmd-->
+
+# Syllabus {-}
+
+## Course Information {-}
+
+- Spring Semester 2022
+- Course Dates: January 10 - May 4, 2022
+- Course Time: MW 9:00 - 10:15 AM 
+- Course Room: EBB 120
+- [Slack Channel]()
+- [Canvas Page]()
+
+
+## Intructor Information {-}
+
+- [Tyler J. Brough](broughtj.github.io)
+- Office Hours: By Appointment
+- Office: BUS 512
+- Email: tyler.brough@usu.edu
+
+## Course Description {-}
+
+This course provides a foundational understanding of predictive modeling, machine learning, and data analysis for business and economic decision making. The focus of the class is on practical applications rather than deep theoretical development. Theory will be introduced to support successful implementation. 
+
+The main purpose of the course is to foster three modes of thought to enable you to become competent scholars of business data analytics:
+
+1. __Computational logic:__ Computational thinking helps break a problem down and find a practical path to successful implementation. Important techniques from computational mathematics and
+   statistics will be introduced as they pertain to data analysis.
+   
+2. __Statistical logic:__ The main focus of the course will be learning to think statistically about problems in business analytics. All meaningful problems in data analysis are necessarily embedded in conditions of uncertainty. There exists a core statistical logic that is distinct from the mathematical details. Learning to develop this mode of thinking is an essential step in the life of any successful business data analyst. We will find that statistical reasoning is essential for proper business decision making. 
+
+3. __Economic logic:__ Arbitrage is the central underlying concept of all of economics and finance. Developing skills in economic reasoning is an essential element in business data analytics.
+
+These three ways of thinking are not independent. Quite to the contrary, we will find that they are strongly mutually reinforcing.
+
+
+## Method of Teaching and Learning {-}
+
+This course will be taught as a graduate seminar style course. __That means that your preparation and participation is crucial.__ We will get out of this course what we individually and collectively put into it. 
+
+We will follow the Socratic Method during lectures. A good amount of class time will also be dedicated to guided computational exploration. The idea behind this exploration is to develop a methodology for __computational thinking__. Mathematical theory will serve as an important background to this enterprise but will not itself be the focus. 
+
+___Your preparation and participation is absolutely essential to the success of this course!___
+
+
+## Assessment {-}
+
+The grade that you will earn will be determined by the weighted total points accumulated. The weights given to each part of the class are as follows:
+
+* _Class Preparation & Participation (10%)_ - In a Socratic style seminar student preparation and participation is essential!
+
+* _Student Presentations (10%)_ - Throughout the course a set of specialized readings will be distributed. Each student will have an opportunity to prepare a presentation to the class on one or more of the assigned readings. 
+
+* _Annotated Bibliography & Wiki-style Articles (15%)_ 
+	- Throughout the course, a set of specialized readings will be distributed. Each student will prepare an annotated bibliography of each reading.
+	- Students will prepare a Wikipedia-style summary article on one specialized topic from each of the four areas of concentration. The following are examples (not exhaustive) of topics that might be chosen:
+		1. Decision theory: sequential analysis, utility and loss functions, risk analysis, etc.
+		2. Supervised learning: pattern classification, Lasso regression, Random forests, etc.
+		3. Time series analysis: cointegration and error-correction, time series bootstrap methods, hidden markov models, etc.
+		4. Reinforcement learning: k-armed bandits, Thompson sampling, AlphaZero, etc.
+
+* _Projects (65%):_
+	- Kaggle Titanic classification (16.25%) - [Kaggle Titanic - Machine Learning from Disaster](https://www.kaggle.com/c/titanic)
+	- Stock returns prediction (16.25%)
+	- Pairs trading prediction (16.25%)
+	- Auction/Reinforcement learning simulation (16.25%)
+	
+* _Extra Credit:_ There will several opportunities for extra credit work. 
+
+
+## Communications {-}
+
+We will use Canvas only to share documents and for certain communications. 
+
+For all other communication purposes we will use a course Slack channel. Students will receive an invitation to the Slack the first week of class. You should check for communications and announcements often. 
+
+
+## Readings {-}
+
+Unfortunately, there is no single source that covers all of the topics that we will cover in this course.  The readings and a reading schedule will be distributed through the course Canvas page. We will take readings from the following sources.
+
+* [Analysis of Integrated and Cointegrated Time Series with R][Pfaff] by Bernhard Pfaff
+
+* [An Introduction to Statistical Learning: with Applicaitons in R][JamesWittenHastieTibshirani] by James, Witten, Hastie & Tibshirani
+
+* [Applied Predictive Modeling][KuhnJohnson] by Kuhn & Johnson
+
+* [Computational Statistics Handbook with MATLAB][MartinezMartinez] by Martinez & Martinez
+
+* [Economic Forecasting][ElliotTimmermann] by Elliot & Timmermann
+ 
+* [Introduction to Machine Learning][Alpaydin] by Ethem Alpaydin
+
+
+While these are the main sources there will be additional sources distributed in addition to the above. 
+
+
+## Topics {-}
+
+We will cover the following main modules:
+
+1. Introduction to statistical decision theory
+2. Supervised learning
+3. Time series analysis
+4. Reinforcement learning 
+
+<br>
+
+### Import dates {-}
+
+* __First day of classes__ - Jan 10
+* __Martin Luther King, Jr. Day__ - Jan 17
+* __Presidents' Day__ - Feb 21
+* __Spring Break__ - Mar 7 - 11
+* __Last day of classes__ - Apr 26
+* __Final exams__ - Apr 28 - May 4
+
+
+[Alpaydin]: https://www.cmpe.boun.edu.tr/~ethem/i2ml3e/
+[ElliotTimmermann]: https://press.princeton.edu/books/hardcover/9780691140131/economic-forecasting
+[JamesWittenHastieTibshirani]: https://www.statlearning.com/
+[KuhnJohnson]: http://appliedpredictivemodeling.com/
+[MartinezMartinez]: https://www.routledge.com/Computational-Statistics-Handbook-with-MATLAB/Martinez-Martinez/p/book/9781466592735
+[Pfaff]: https://link.springer.com/book/10.1007/978-0-387-75967-8
+
+<!--chapter:end:01-syllabus.Rmd-->
+
+```{r setup, include=FALSE}
+library(reticulate)
+use_python("/Users/tjb/anaconda3/bin/python")
+```
+
+# Computational Exercises {-}
+
+Software design skills are essential for the practicing data scientist. These exercises are designed to help you develop some basic design skills within the broad context of numerical computing.
+
+You should seek for a proper mix of elegance and efficiency in your programs.
+
+\newpage
+
+## The Chicken Nuggets Problem {-}
+
+\vspace{10mm}
+
+This problem is known as the _chicken nuggets_ problem (or sometimes the _coins_ problem). It goes like this: you walk into Chick Fil-A with an unlimited budget (and appetite!). You can purchase nuggets in boxes of 6, 9, and 20 pieces.
+
+Write a program to tell you the ___highest___ number of nuggets that you ___cannot___ purchase. Re-read that just in case it went past you the first time. The highest number that you cannot get. For example, you can get 15 nuggets by purchasing a box of 6 and a box of 9 nuggets. You can get 18 by purchasing 2 boxes of 9 or 3 boxes of 6. But with no combination of 6, 9, or 20 can you purchase 17 nuggets. What is the highest number that you cannot get?
+
+This simple game will give you experience assembling different bits of `Python` programming to find the solution. The most direct approach and simplest approach will also employ a very simple numerical method called _brute force_ search. 
+
+\vspace{5mm}
+
+Please write your solution starting with the code snippet below. 
+
+\vspace{5mm}
+
+```{python include=TRUE, eval=FALSE}
+def main():
+    # your code goes here!
+    print("Good luck!") # remove this line of code 
+
+if __name__ == "__main__":
+    main()
+```
+
+\newpage
+
+## Guess My Number {-}
+
+\vspace{10mm}
+
+In the book [Python Programming for the Absolute Beginner, 3rd Edition](http://goo.gl/7PGr9r) the author teaches `Python` through some simple game programming. One of the first games that he shows how to write is the so-called *Guess My Number* game, which is the children's game of guessing someone's secret number (a number between 1 and 100). 
+
+First, write a version of the game in which the computer chooses a secret number and the enduser must guess it.
+
+\vspace{5mm}
+
+The output of an implementation of this game might look like this:
+
+\vspace{5mm}
+
+```
+    	Welcome to 'Guess My Number'!
+    	I'm thinking of a number between 1 and 100.
+    	Try to guess it in as few attempts as possible.
+    
+    Take a guess: 50
+    Lower ...
+    Take a guess: 25
+    Lower ...
+    Take a guess: 12
+    Higher...
+    Take a guess: 18
+    Lower ...
+    Take a guess: 15
+    Lower ...
+    Take a guess: 13
+    You guessed it! The number was 13
+    And it only took you 6 tries!
+    
+    
+    Press the enter key to exit.
+```
+
+\vspace{5mm}
+
+
+Now write a version of the game where you and the computer switch roles! That is right: you think of a number and the computer must guess it in as few attempts as possible. You will need to encode your guessing logic to the program solution.
+
+This might seem like silly game play, but in order to solve the problem you must use an algorithm called *binary search* or the *bisection method* to solve the problem correctly. This is our first attempt at programming a simple algorithm. This algorithm is used often in data analytics applications!
+
+\vspace{5mm}
+
+Please use the code cell below to write your solution:
+
+\vspace{5mm}
+
+```{python include=TRUE, eval=FALSE}
+def main():
+    # your code goes here!
+    print("Good luck!") # delete this line of code
+    
+if __name__ == "__main__":
+    main()
+```
+
+\newpage
+
+## Monte Carlo Simulation of Pi {-}
+
+_"Anyone who attempts to generate random numbers by deterministic means is, of course, living in a state of sin."_ -- John von Neumann
+
+\vspace{10mm}
+
+### Statement of the Problem {-}
+
+The _Monte Carlo Method_ is a computer simulation algorithm that works by using _pseudorandom number generators_ to mimic real-world randomness. The purpose of this exercise is to give you an opportunity to practice the Monte Carlo method in a simplified setting.
+
+Consider a square with sides of 1 unit and a unit circle contained within the square. It turns out that we can estimate the value of $\pi$ by simulating many points within the square and counting the proportion that fall within the circle to the total number of points (i.e. those within the square).
+
+Your task in this exercise is write a `Python` script that estimates the value of $\pi$ by Monte Carlo simulation. 
+
+Recall that the area of the circle is given by the following equation:
+
+$$
+A = \pi r^{2}
+$$
+
+Where $r$ is the radius of the circle, which in this case is $\frac{1}{2}$. Thus, the area of the unit cirlce is $\pi \left(\frac{1}{2}\right)^{2} = \frac{\pi}{4}$.
+
+Notice that in general the $\frac{\mbox{area of the cirlce}}{\mbox{area of the square}} \approx \frac{N_{c}}{N_{T}}$ where $N_{c}$ is the number of simulated points falling inside the circle and $N_{T}$ is the total number of simulated points.
+
+Then for the unit circle it will be true that:
+
+$$
+\pi \approx 4 \times \frac{N_{c}}{N_{T}}
+$$
+
+\vspace{5mm}
+
+Recall that for the equation for the unit circle is $x^{2} + y^{2} = 1$. Use this to classify a simulated $xy$-point as inside or outside the circle. ___Hint:___ simulate two standard uniform draws to form your $xy$-pairs.
+
+Monte Carlo relies upon a _law of large numbers_ argument where the approximation gets more accurate the more data points are simulated. Evaluate your program for repetitions of:
+
+```{python include=TRUE, eval=TRUE}
+n = [10**i for i in range(2, 8)]
+n
+```
+
+\vspace{5mm}
+
+Produce a table of the results.
+
+\vspace{5mm}
+
+### Some Interesting Historical Background {-}
+
+The great mathematician Stanislaw Ulam invented the Monte Carlo method while his friend and colleague, John von Neumann was building the ENIAC machine with his team of engineers. For an interesting discussion of the history of the episode see here: [The Monte Carlo Algorithm - George Dyson](https://www.youtube.com/watch?v=TtcB1MOlNiY&list=PLID29ec8IbbFEyZGNbRrgnWjYb_gZt_Lc).
+
+See the chapter _10. Monte Carlo_ in @Dyson2012 for a more in-depth accounting.
+
+\newpage
+
+## The Cherry Tootsie Rolls Problem {-}
+
+\vspace{10mm}
+
+There are 3 candy machines in front of you that each dispense either chocolate or cherry flavored Tootsie Rolls. Each has a different probability of dispensing chocolate versus cherry flavors. Your absolute favorite flavor is cherry. You can draw one Tootsie Roll at a time from a single candy machine. The dispensing probabilities remain constant over time. 
+
+- Outline a strategy to obtain as many cherry flavored Tootsie Rolls as possible for a fixed set of draws. 
+- This is a tough problem. Use computational and statistical thinking to come up with a strategy. Use your imagination. Be adventurous. 
+- ___Hint:___ Use Bayes's Rule! 
+
+\newpage
+
+
+## Monte Carlo Simulation of the St. Petersburg Paradox {-}
+
+\vspace{10mm}
+
+The _St. Petersburg Paradox_ is a very important paradox in economics and decision theory. It is named after the city where Daniel Bernoulli lived when he published the original paper on the subject. The paradoxical nature of the problem stems from the fact that a lottery is offered with infinite expected value but in practice few people are willing to pay more than $\$20$ for a chance to play the game. Thus the paradox. How can a lottery that has infinite value only be worth a relatively very small amount to most people?!
+
+The rules of the game are as follows: A coin is flipped until a head ($H$) occurs. If a $H$ appears on the $n$th flip, the player earns $\$2^{n}$. Of course, the game has an infinite number of outcomes (the coin might be flipped many many times and never come up $H$ though that is extremely unlikely), but it is easy to write down the first few possibilities:
+
+$$
+x_{1} = \$2, x_{2} = \$4, x_{3} = \$8, \ldots, x_{n} = \$2^{n}
+$$
+
+\vspace{10mm}
+
+This can be computed in `Python` as follows:
+
+\vspace{5mm}
+
+```{python include=TRUE}
+for i in range(1,8):
+    print(f"(i={i}, x=${2.0**i})")
+```
+
+\vspace{5mm}
+
+The probability of getting a $H$ for the first time on the $i$th flip is $\left(\frac{1}{2}\right)^{i}$; it is the probability of getting $(i - 1)$ tails ($T$) followed by a $H$. Hence the corresponding probabilities of the first few values are:
+
+$$
+p_{1} = \frac{1}{2}, p_{2} = \frac{1}{4}, p_{3} = \frac{1}{8}, \ldots, p_{n} = \frac{1}{2^{n}}
+$$
+
+\vspace{5mm}
+
+So the expected value of the lottery is given by the following:
+
+$$
+\begin{aligned}
+E(x) &= \sum\limits_{i=1}^{\infty} p_{i}x_{i} = \sum\limits_{i=1}^{\infty} 2^{i} (1/2^{i}) \\
+     & \\
+     &= 1 + 1 + 1 + \cdots + 1 + \cdots = \infty
+\end{aligned}
+$$
+
+\vspace{10mm}
+
+Your task is to conduct a Monte Carlo simulation of the game as follows:
+
+- You play a game against the dealer. 
+- The dealer puts $\$2$ into the pot. 
+- For each round of the game a fair coin is tossed.
+- If the coin comes up $T$ the dealer doubles the pot. 
+- If the coin comes up $H$ the game ends and you win the pot. 
+
+\vspace{10mm}
+
+What is your expected value for playing this game? How much would you be willing to pay to play this game? 
+
+Structure your solution to the game such that the player can parameterize the number of repetitions for the simulation as well the entry fee for playing the game. Calculate the average net earnings as well as median earnings across the number of repetitions. Print this output for each run to the console when the simulation is terminated.
+
+See _Chapter 7: Uncertainty_ in @Nicholson2012 for more details.
+
+
+\newpage
+
+
+## Monte Carlo Comparison of MLE & MAP Estimators {-}
+
+In this exercise you will compare maximum likelihood estimation to maximum a posteriori estimation in three different scenarios. 
+
+1. The Beta-Binomial conjugate model
+    - Select a value of $\theta$ (the "true" Bernoulli probability of success) that is not "fair"
+    - Derive the maximum likelihood estimator 
+    - Derive the maximum a posteriori estimator
+    - Choose an "informative" prior 
+    - Set $M = 100,000$ and simulate a dataset with $N = 50$
+    - Estimate each model and store the estimate
+    - Make tables and histograms to compare the sampling distributions of each estimator
+    - Describe the results verbally
+
+2. The Gamma-Poisson conjugate model
+    - Repeat the above for this model 
+    - What is the MLE? 
+    - What is your prior?
+
+3. The Normal-Normal conjugate model
+    - Repeat the above for this model
+    - Assume a fixed and known value for $\sigma$ (_is this realistic?_)
+    - What is the MLE?
+    - What is your prior? 
+
+
+\newpage
+
+
+
+<!--chapter:end:02-computational-exercises.Rmd-->
+
+# Module 1: Decision Theory {-}
+
+In this first module we establish the common roots of decision making under conditions of uncertainty in economics and statistics as way to frame and appreciate current developments in data science and machine learning.
+
+\pagebreak
+
+<!--chapter:end:03-module1-00-intro.Rmd-->
+
+## Readings {-}
+
+\vspace{5mm}
+
+### Textbook Readings {-}
+
+Please read the chapters from the different sources listed below. All of these sources are available on the course Canvas Files page.
+
+1. _Chapter 2: Decision Theory_ from @YoungSmith2005.
+
+2. _Chapter 7: Uncertainty_ from @Nicholson2012.
+
+3. _Chapter 1: Introduction_ from @ElliottTimmermann2013.
+
+4. _Chapter 2: Loss Functions_ from @ElliottTimmermann2013.
+
+\vspace{10mm}
+
+### Academic Journal Articles {-}
+
+Please prepare an entry in your annotated bibliography for each of the following articles.
+
+1. _The Use of Knowledge in Society_ by @Hayek1945a.
+
+2. _What Should Economists Do?_ by @Buchanan1964a.
+
+3. _From Wald to Savage: homo economicus becomes a Bayesian statistician_ by @Giocoli2013.
+
+4. _Economic Forecasting_ by @ElliottTimmermann2008.
+
+5. _Artificial Intelligence: the revolution hasn’t happened yet_ by @Jordan2019a.
+
+\pagebreak
+
+<!--chapter:end:03-module1-01-readings.Rmd-->
+
+## Student Presentation Schedule {-}
+
+\vspace{5mm}
+
+### January 19, 2022 {-}
+
+- @Giocoli2013 by Liz Giles
+
+- @ElliottTimmermann2008 by Connor Waterman
+
+\vspace{5mm}
+
+### January 26, 2022 {-}
+
+- @Hayek1945a by Jacob Needham
+
+- @Buchanan1964a by Wes Smith
+
+\pagebreak
+
+<!--chapter:end:03-module1-02-schedule.Rmd-->
+
+## Schedule of Due Dates {-}
+
+\vspace{5mm}
+
+### Due by February 4, 2022 {-}
+
+1. All readings for module 1 completed by this date
+
+2. Wiki-style article on some chosen subject from module 1
+
+3. St. Petersburg paradox simulation
+
+4. Annotated bibliography for module 1 journal articles
+
+
+
+\pagebreak
+
+<!--chapter:end:03-module1-03-due-dates.Rmd-->
+
+# Module 2: Supervised Learning {-}
+
+In this module we will cover the foundational topic of supervised learning in the context of classification and regression algorithms.
+
+\pagebreak
+
+<!--chapter:end:04-module2-00-intro.Rmd-->
+
+## Readings {-}
+
+\vspace{5mm}
+
+### Textbook Readings {-}
+
+Please read the chapters from the different sources listed below. All of these sources are available on the course Canvas Files page.
+
+\vspace{10mm}
+
+### Academic Journal Articles {-}
+
+Please prepare an entry in your annotated bibliography for each of the following articles.
+
+\pagebreak
+
+<!--chapter:end:04-module2-01-readings.Rmd-->
+
+## Student Presentation Schedule {-}
+
+\vspace{5mm}
+
+### Who Has What {-}
+
+- @NgJordan2001 (Ma'ata Burkhart)
+
+- @Breiman2001  (Tyler Clayson)
+
+- @Shmueli2010 (Connor Hoiland)
+
+- @Rubin1984 (Brian Kissmer) 
+
+\pagebreak
+
+<!--chapter:end:04-module2-02-schedule.Rmd-->
+
+## Schedule of Due Dates {-}
+
+\vspace{5mm}
+
+### Due by April 9, 2022 {-}
+
+1. All readings for module 2 completed by this date
+
+2. Wiki-style article on some chosen subject from module 2
+
+3. The Monte Carlo comparison of MLE & MAP estimators 
+
+4. Annotated bibliography for module 2 journal articles
+
+5. The Titanic classification project results and write-up
+
+\pagebreak
+
+<!--chapter:end:04-module2-03-due-dates.Rmd-->
+
+## The Titanic Classification Project {-}
+
+\vspace{5mm}
+
+### Project Description {-}
+
+In this project you will work with the Kaggle Titanic dataset. Your assignment is to 
+build a classification model to predict which passengers survived the infamous Titanic
+Shipwreck. 
+
+\vspace{3mm}
+
+You should test the several different classification methods that you have learned in this
+class (naive Bayes, logit/probit regression, tree-based methods, xgboost, deep learning,
+etc) to find the most accurate model possible. Your deliverable is a Jupyter notebook with
+Python code that carries out the training, testing, and comparison of your models. You should
+list not just the classification methods you used, but also the features that you included 
+to make your predictions. You should make tables of your results in your document and write
+several paragraphs of prose to explain the results.
+
+\vspace{3mm}
+
+See here for a description of the [Titanic Kaggle competition](https://www.kaggle.com/competitions/titanic/overview)
+
+\vspace{3mm}
+
+You may find the following chapters and sections of chapters helpful: 
+
+- Chapters 2.2, 4.5, and 5 from @JamesEtAl2013
+
+- Chapters 3, 4, and 11 from @KuhnJohnson2013 
+
+\pagebreak
+
+<!--chapter:end:04-module2-04-titanic.Rmd-->
+
+# Module 3: Time Series Analysis {-}
+
+In this module we will cover the basics of time series analysis for predictive analytics. Time series analysis is a topic that every practicing data analyst must be familiar with. 
+
+\pagebreak
+
+<!--chapter:end:05-module3-00-introd.Rmd-->
+
+## Readings {-}
+
+\vspace{5mm}
+
+### Textbook Readings {-}
+
+- Chapters 10, 11, and 18 of the Wooldridge textbook
+
+- Brough time series notes I - V (this booklet)
+
+- Chapter 5 in @ChernickLaBudde2014 
+\vspace{8mm}
+
+### Academic Articles {-}
+
+Please read the following and create entries for them in your annotated bibliographies.
+
+- @Murray1994 (Emily Rice)
+
+- @GutierrezTse2011 (Austin Warr)
+
+- @Hansen2005 (Andrew Walker)
+
+- @SullivanTimmermannWhite1999 (Shain Chowdhury)
+
+\pagebreak
+
+<!--chapter:end:05-module3-01-readings.Rmd-->
+
+## Schedule of Due Dates {-}
+
+\vspace{5mm}
+
+### Due by April 23, 2022 {-}
+
+1. The pairs programming project results and write-up.
+
+\vspace{5mm}
+
+### Due by May 7, 2022 {-}
+
+1. Annotated bibliographies for module 3.
+
+2. The stock returns prediction final project results and write-up.
+
+3. All other work that you would like to hand in for the final time.
+
+
+\pagebreak
+
+<!--chapter:end:05-module3-02-due-dates.Rmd-->
+
+## Time Series Notes I {-}
+
+\vspace{5mm}
+
+### Beginning Time Series Topics {-}
+
+
+Most data in economics (espcially in macroeconomics and finance) come in the form of _time series_.
+
+\vspace{3mm}
+
+__Time Series:__ a set of repeated observations of the same random variable ordered in time. 
+
+\vspace{3mm}
+
+* Example: GNP or stock returns
+
+* Also: prices, exchange rates, interest rates, inflation (lots of others)
+
+
+### {-}
+
+We can write a time series as $\{x_{1}, x_{2}, \ldots, x_{T}\}$ or simply as $\{x_{t}\}_{t=1}^{T}$.
+
+\vspace{3mm}
+
+We treat $x_{t}$ as a random variable. Really nothing different from the rest of econometrics. Notice the difference is the subscript $t$ rather than $i$.
+
+\vspace{3mm}
+
+If, for example, a random variable $y_{t}$ is generated by
+
+$$
+y_{t} = x_{t} \beta + \varepsilon_{t}
+$$
+
+\vspace{3mm}
+
+in which $E(y_{t}|x_{t}) = 0$
+
+
+### {-}
+
+Then OLS provides a consistent estimate for $\beta$ (just as if the subscript were "$i$" instead of "$t$").
+
+\vspace{3mm}
+
+The phrase "time series" is used to denote:
+
+\vspace{2mm}
+
+1. a sample $\{x_{t}\}$ such as IBM stock price from Jan. 1, 2010 to Dec. 31, 2010.
+
+2. A probability model for that sample. i.e. a statement about the joint distribution of the random variables $\{x_{t}\}$.
+
+
+### {-} 
+
+A first model for the joint distribution of a time series $\{x_{t}\}$ is: 
+
+$$
+x_{t} = \varepsilon_{t}, \quad \varepsilon_{t} \sim N(0, \sigma_{\varepsilon}^{2})
+$$
+
+\vspace{2.5mm}
+
+i.e. $x_{t}$ is normal and independent over time. 
+
+\vspace{3mm}
+
+Typically, time series are not iid, which is what makes them interesting. 
+
+\vspace{3mm}
+
+Ex: unusually high inflation today is likely to lead to unusually high inflation tomorrow. 
+
+
+### {-}
+
+The building block for our time series models is the ___white noise process___
+
+\vspace{3mm}
+
+$$
+\varepsilon_{t} \sim \mbox{ iid }  N(0, \sigma_{\varepsilon}^{2})
+$$
+\vspace{3mm}
+
+Note three implications: 
+
+\vspace{2.5mm}
+
+1. $E(\varepsilon_{t}) = E(\varepsilon_{t} | \varepsilon_{t-1}, \varepsilon_{t-2}, \ldots) = E(\varepsilon_{t} | \mbox{ all info at t-1}) = 0$
+
+2. $E(\varepsilon_{t} \varepsilon_{t-j}) = Cov(\varepsilon_{t} \varepsilon_{t-j}) = 0$
+
+3. $Var(\varepsilon_{t}) = Var(\varepsilon_{t} | \varepsilon_{t-1}, \varepsilon_{t-2}, \ldots) = Var(\varepsilon_{t} | \mbox{ all info at t-1}) = \sigma_{\varepsilon_{t}^{2}}$
+
+
+### {-} 
+
+$(1)$ and $(2)$ are the absence of any serial correlation or predictability. 
+
+\vspace{3mm}
+
+$(3)$ is conditional homoscedasticity or a constant conditional variance. 
+
+\vspace{5mm}
+
+By itself $\varepsilon_{t}$ is pretty boring. If $\varepsilon_{t}$ is abnormally high there is no tendency for $\varepsilon_{t+1}$ to be high. 
+
+\vspace{2mm}
+
+More realistic models are constructed by taking combinations of $\varepsilon_{t}$.
+
+
+### Basic ARMA Models {-}
+
+
+Most of the time our time series models will be created by taking linear combinations of white noise
+
+\vspace{3mm}
+
+* AR(1): $\quad \quad \quad x_{t} = \phi x_{t-1} + \varepsilon_{t}$
+
+* MA(1): $\quad \quad \quad x_{t} = \varepsilon_{t} + \theta \varepsilon_{t-1}$
+
+* AR(p): $\quad \quad \quad x_{t} = \phi_{1} x_{t-1} + \phi_{2} x_{t-2} + \cdots + \phi_{p} x_{t-p} + \varepsilon_{t}$
+
+* MA(q): $\quad \quad \quad x_{t} = \varepsilon_{t} + \theta_{1} \varepsilon_{t-1} + \theta_{2} \varepsilon_{t-2} + \cdots + \theta_{q} \varepsilon_{t-q}$
+
+* ARMA(p,q): $\quad x_{t} = \phi_{1} x_{t-1} + \cdots + \phi_{p} x_{t-p} + \varepsilon_{t} + \theta_{1} \varepsilon_{t-1} + \cdots + \theta_{q} \varepsilon_{t-q}$
+
+
+### {-}
+
+Notice that each model is a recipe to generate a sequence $\{x_{t}\}$ given a sequence of realizations of the white noise process and a starting $x_{0}$ value.
+
+\vspace{3mm}
+
+All of these models are mean zero, and represent deviations of the series about a mean. For example, if a series has mean $\bar{x}$ and follows an AR(1)
+
+$$
+(x_{t} - \bar{x}) = \phi(x_{t-1} - \bar{x}) + \varepsilon_{t}
+$$ 
+
+is equivalent to 
+
+$$
+\begin{aligned}
+x_{t} &= (1 - \phi)\bar{x} + \phi x_{t-1} + \varepsilon_{t} \\
+      &= \mu + \phi x_{t-1} + \varepsilon_{t}
+\end{aligned}
+$$
+\vspace{2mm}
+
+where $\mu = (1 - \phi)\bar{x}$
+
+\vspace{2mm}
+
+__NB:__ the constant absorbs the mean
+
+
+### Lag Operators and Polynomials {-}
+
+\vspace{3mm}
+
+It is easiest to represent ARMA models in _lag operator_ notation. The lag operator moves the index back one time unit:
+
+$$
+Lx_{t} = x_{t-1}
+$$
+
+\vspace{4mm}
+
+More formally, $L$ is an operator that takes an original time series $\{x_{t}\}$ and produces another, which is the same as the original only shifted backwards in time.
+
+
+### {-}
+
+From the definition we can do other things:
+
+$$
+\begin{aligned}
+L^{2} x_{t}  &= L(L x_{t}) = L x_{t-1} = x_{t-2} \\
+L^{j} x_{t}  &= x_{t-j} \\
+L^{-j} x_{t} &= x_{t+j} \\
+\end{aligned}
+$$
+
+\vspace{3mm}
+
+We can also define lag polynomials, e.g.
+
+$$
+a(L) = (a_{0} L + a_{1} L^{1} + a_{2} L^{2}) x_{t} = a_{0} x_{t} + a_{1} x_{t-1} + a_{2} x_{t-2}
+$$
+
+
+### {-}
+
+Using this notation we can rewrite the ARMA models as
+
+\vspace{3mm}
+
+* AR(1): $\quad \quad \quad (1 - \phi L) x_{t} = \varepsilon_{t}$
+
+* MA(1): $\quad \quad \quad x_{t} = (1 + \theta L) \varepsilon_{t}$
+
+* AR(p): $\quad \quad \quad (1 - \phi_{1} L - \phi_{2} L^{2} + \cdots + \phi_{p} L^{p}) x_{t} = \varepsilon_{t}$
+
+* MA(q): $\quad \quad \quad x_{t} = (1 + \theta_{1} L + \theta_{2} L^{2} + \cdots + \theta_{q} L^{q}) \varepsilon_{t}$
+
+
+### {-}
+
+ARMA models are not unique. A time series with a given joint distribution of $\{x_{0}, x_{1}, \ldots, x_{T}\}$ can usually be represented with a variety of ARMA models.
+
+\vspace{3mm}
+
+It is often convenient to work with different representations:
+
+\vspace{2mm}
+
+1. The shortest (or only finite length) polynomial representation is usually the easiest to work with
+
+2. AR forms are the easiest to estimate (since OLS assumptions still apply)
+
+3. MA forms express $x_{t}$ in terms of a linear combination of independent right hand side variables. Often finding variances and covariances in this form is easiest.
+
+
+### AR(1) to MA($\infty$) by Recursive Substitution {-}
+
+\vspace{3mm}
+
+Start with an AR(1)
+
+$$
+x_{t} = \phi x_{t-1} + \varepsilon_{t}
+$$
+
+\vspace{3mm}
+
+Recursively substituting
+
+$$
+\begin{aligned}
+x_{t} &= \phi(\phi x_{t-2} + \varepsilon_{t-1}) + \varepsilon_{t} = \phi^{2} x_{t-2} + \phi \varepsilon_{t-1} + \varepsilon_{t} \\
+x_{t} &= \phi^{k} x_{t-k} + \phi^{k-1} \varepsilon_{t-k+1} + \cdots + \phi^{2} \varepsilon_{t-2} + \phi \varepsilon_{t-1} + \varepsilon_{t} \\
+\end{aligned}
+$$
+
+\vspace{3mm}
+
+Thus an AR(1) can always be expressed as an ARMA(k,k-1).
+
+
+### {-}
+
+Also, if $|\phi| < 1$ so that $$\lim_{k\to\infty} \phi^{k} x_{t-k} = 0$$ then
+
+$$
+x_{t} = \sum\limits_{j=0}^{\infty} \phi^{j} \varepsilon_{t-j}
+$$
+
+\vspace{5mm}
+
+### AR(1) to MA($\infty$) with Lag Operators {-}
+
+\vspace{3mm}
+
+Starting again with the AR(1) model:
+
+$$
+(1 - \phi L) x_{t} = \varepsilon_{t}
+$$
+
+\vspace{3mm}
+
+The way to "invert"  the AR(1) is to write
+
+$$
+x_{t} = (1 - \phi L)^{-1} \varepsilon_{t}
+$$
+
+
+### {-} 
+
+What does $(1 - \phi L)^{-1}$ mean? We have only defined polynomials in $L$ so far.
+
+\vspace{3mm}
+
+We try to use the expression
+
+$$
+(1 - z)^{-1} = 1 + z + z^{2} + z^{3} + \cdots \quad \mbox{for} \quad |z| < 1
+$$
+
+__NB:__ this expression for $z$ can be proven with a Taylor expansion.
+
+\vspace{3mm}
+
+Using this expansion and hoping that $|\phi| < 1$ implies $|\phi L| < 1$, suggests
+
+\vspace{3mm}
+
+$$
+x_{t} = (1 - \phi L)^{-1} \varepsilon_{t} = (1 + \phi L + \phi^{2} L^{2}  + \cdots) \varepsilon_{t} = \sum\limits_{j=0}^{\infty} \phi^{j} \varepsilon_{t-j}
+$$
+
+
+### {-}
+
+Note: we can't always perform this inversion. We require $|\phi| < 1$. Not all ARMA processes are invertible to a representation of $x_{t}$ in terms of current and past $\varepsilon_{t}$
+
+\vspace{2mm}
+
+### AR(p) to MA($\infty$) {-}
+
+Getting to an MA($\infty$) from an AR(1) is almost as easy either way (recursive substitution or lag operators) but in higher order models lag operators become much easier. 
+
+\vspace{2mm}
+
+Let's try an AR(2):
+
+$$
+\begin{aligned}
+x_{t} &= \phi_{1} x_{t-1} + \phi_{2} x_{t-2}  + \varepsilon_{t} \\
+(1 - \phi_{1} L - \phi_{2} L^{2}) x_{t} &= \varepsilon_{t}
+\end{aligned}
+$$
+
+### {-}
+
+We need to factor $(1 - \phi_{1} L - \phi_{2} L^{2})$ in order to use the $(1 - z)^{-1}$ formula. So find $\lambda_{1}$ and $\lambda_{2}$ such that
+
+\vspace{3mm}
+
+$$
+(1 - \phi_{1} L - \phi_{2} L^{2}) = (1 - \lambda_{1} L) (1 - \lambda_{2} L)
+$$
+
+\vspace{3mm}
+
+The solution is 
+
+$$
+\begin{aligned}
+\lambda_{1} \lambda_{2}   &= -\phi_{2} \\
+\lambda_{1} + \lambda_{2} &= \phi_{1} 
+\end{aligned}
+$$
+
+
+### Some Mathematical Details {-}
+
+$$
+\begin{aligned}
+(1 - \lambda_{1} L) (1 - \lambda_{2} L) &= 1 - \lambda_{2} L - \lambda_{1} L + \lambda_{1} \lambda_{2} L \\
+                                        &= 1 - (\lambda_{1} + \lambda_{2})L + \lambda_{1} \lambda_{2} L
+\end{aligned}
+$$
+
+
+### {-}
+
+Now we need to invert
+
+$$
+(1 - \lambda_{1} L) (1 - \lambda_{2} L) x_{t} = \varepsilon_{t}
+$$
+
+\vspace{3mm}
+
+Thus
+
+$$
+\begin{aligned}
+x_{t} &= (1 - \lambda_{1} L)^{-1} (1 - \lambda_{2})^{-1} x_{t} = \varepsilon_{t} \\
+x_{t} &= \left[\sum\limits_{j=0}^{\infty} \lambda_{1}^{j} L^{j}\right] \left[\sum\limits_{j=0}^{\infty} \lambda_{2}^{j} L^{j} \right] \varepsilon_{t}
+\end{aligned}
+$$
+
+\vspace{3mm}
+
+Multiplying out the polynomials is tedious but straight forward
+
+\vspace{3mm}
+
+$$
+\begin{aligned}
+\left[\sum\limits_{j=0}^{\infty} \lambda_{1}^{j} L^{j}\right] \left[\sum\limits_{j=0}^{\infty} \lambda_{2}^{j} L^{j} \right] &= (1 + \lambda_{1} L + \lambda_{2} L^{2} + \cdots) (1 + \lambda_{2} L + \lambda_{2} L^{2} + \cdots) \\
+&= 1 + (\lambda_{1} + \lambda_{2}) L + (\lambda_{1}^{2} + \lambda_{1} \lambda_{2} + \lambda_{2}^{2}) L^{2} + \cdots \\
+&= \sum\limits_{j=0}^{\infty} \left(\sum\limits_{k=0}^{j} \lambda_{1}^{k} \lambda_{2}^{j-k}\right) L^{j}
+\end{aligned}
+$$
+
+
+### {-}
+
+A nicer way to express an MA($\infty$) is to use the __partial fractions trick__. Find $a$ and $b$ such that
+
+\vspace{3mm}
+
+$$
+\begin{aligned}
+\frac{1}{(1 - \lambda_{1} L) (1 - \lambda_{2} L)} &= \frac{a}{(1 - \lambda_{1} L)} + \frac{b}{(1 - \lambda_{2} L)} \\
+&= \frac{a(1 - \lambda_{2} L) + b(1 - \lambda_{1} L)}{(1 - \lambda_{1} L)(1 - \lambda_{2} L)}
+\end{aligned}
+$$
+
+\vspace{3mm}
+
+The right-hand side numerator must equal $1$, so
+
+$$
+\begin{aligned}
+a + b &= 1 \\
+a \lambda_{2} + b \lambda_{1} & = 0
+\end{aligned}
+$$
+
+\vspace{3mm}
+
+The solution is
+
+$$
+b = \frac{\lambda_{2}}{\lambda_{2} - \lambda_{1}}, \quad a = \frac{\lambda_{1}}{\lambda_{1} - \lambda_{2}}
+$$
+
+
+### {-}
+
+$$
+\frac{1}{(1 - \lambda_{1} L) (1 - \lambda_{2} L)} = \frac{\lambda_{1}}{(\lambda_{1} - \lambda_{2})} \frac{1}{(1 - \lambda_{1} L)} + \frac{\lambda_{2}}{(\lambda_{2} - \lambda_{1})} \frac{1}{(1 - \lambda_{2} L)}
+$$
+
+\vspace{3mm}
+
+Thus we can express $x_{t}$ as
+
+\vspace{3mm}
+
+$$
+\begin{aligned}
+x_{t} &= \frac{\lambda_{1}}{\lambda_{1} - \lambda_{2}} \sum\limits_{j=0}^{\infty} \lambda_{1}^{j} \varepsilon_{t-j} + \frac{\lambda_{2}}{\lambda_{2} - \lambda_{1}} \sum\limits_{j=0}^{\infty} \lambda_{2}^{j} \varepsilon_{t-j} \\
+&= \sum\limits_{j=0}^{\infty} \left( \frac{\lambda_{1}}{\lambda_{1} - \lambda_{2}}  \lambda_{1}^{j} + \frac{\lambda_{2}}{\lambda_{2} - \lambda_{1}} \lambda_{2}^{j} \right) \varepsilon_{t-j}
+\end{aligned}
+$$
+
+### {-}
+
+__Note:__ Again not every AR(2) can be inverted. We require that the $\lambda$'s satisfy $|\lambda| < 1$.
+
+\vspace{3mm}
+
+Until explicitly stated we will assume we are working with invertible ARMA models.
+
+\vspace{3mm}
+
+___MA(q) to AR($\infty$)___
+
+\vspace{2mm}
+
+This is now straight forward
+
+$$
+x_{t} = b(L) \varepsilon_{t}
+$$
+
+\vspace{3mm}
+
+has AR($\infty$) representation
+
+\vspace{3mm}
+
+$$
+b(L)^{-1} x_{t} = \varepsilon_{t}
+$$
+
+\pagebreak
+
+<!--chapter:end:05-module3-03-time-series-1.Rmd-->
+
+## Time Series Notes II {-}
+
+\vspace{5mm}
+
+### Time Series Continued {-}
+
+Summary of allowed lag polynomial manipulations
+
+\vspace{5mm}
+
+1. We can multiply them
+
+$$
+a(L)b(L) = (a_{0} + a_{1} L + \cdots) (b_{0} + b_{1} L + \cdots) = a_{0}b_{0} + (a_{0}b_{1} + b_{0}a_{1}) L + \cdots
+$$
+
+\vspace{3mm}
+
+2. They commute
+
+$$
+a(L)b(L) = b(L)a(L)
+$$
+
+
+3. We can raise them to positive integer powers
+
+$$
+a(L)^{2} = a(L)a(L)
+$$
+
+### {-}
+
+4. We can invert them, by factoring them and inverting each term
+
+$$
+\begin{aligned}
+a(L)      &= (1 - \lambda_{1} L) (1 - \lambda_{2} L) \quad \cdots \\
+a(L)^{-1} &= (1 - \lambda_{1} L)^{-1} (1 - \lambda_{2} L)^{-1} \\
+          &= \sum\limits_{j=0}^{\infty} \lambda_{1}^{j} L^{j} \sum\limits_{j=0}^{\infty} \lambda_{2}^{j} L^{j} \\
+          & = c_{1} (1 - \lambda_{1} L)^{-1} + c_{2} (1 - \lambda_{2} L)^{-1} \quad \cdots \\
+\end{aligned}
+$$
+
+\vspace{3mm}
+
+We'll look at roots greater than and/or equal to one, fractional powers, and non-polynomial functions of lag operators later. 
+
+
+### Multivariate ARMA Models {-}
+
+The multivariate case is similar, reinterpreting our variables as vectors and matrices:
+
+\vspace{5mm}
+
+$$
+x_{t} = \begin{bmatrix} y_{t} \\ z_{t} \end{bmatrix}
+$$
+
+\vspace{5mm}
+
+The building block is the multivariate white noise process, $\varepsilon_{t} \sim \mbox{ iid } N(0, \Sigma)$, which we write as follows
+
+
+### {-} 
+
+$$
+\varepsilon_{t} = \begin{bmatrix} \delta_{t} \\ \nu_{t} \end{bmatrix}
+$$
+
+\vspace{3mm}
+
+with 
+
+$$
+\begin{aligned}
+E(\varepsilon_{t}) &= 0 \\
+E(\varepsilon_{t} \varepsilon_{t}^{\prime}) &= \Sigma = \begin{bmatrix} \sigma_{\delta}^{2} & \sigma_{\delta \nu}^{2} \\ \sigma_{\nu \delta}^{2} & \sigma_{\nu}^{2} \end{bmatrix}
+\end{aligned}
+$$
+
+\vspace{5mm}
+
+and
+
+$$
+E(\varepsilon_{t} \varepsilon_{t-j}^{\prime}) = 0
+$$
+
+
+### {-} 
+
+\vspace{2mm}
+
+The AR(1) is $x_{t} = \phi x_{t-1} + \varepsilon_{t}$, or 
+
+\vspace{4mm}
+
+$$
+\begin{bmatrix} y_{t} \\ z_{t} \end{bmatrix} = \begin{bmatrix} \phi_{yy} & \phi_{yz} \\ \phi_{zy} & \phi_{zz} \end{bmatrix} \begin{bmatrix} y_{t-1} \\ z_{t-1} \end{bmatrix} + \begin{bmatrix} \delta_{t} \\ \nu_{t} \end{bmatrix}
+$$
+
+\vspace{5mm}
+
+Or
+
+$$
+\begin{aligned}
+y_{t} &= \phi_{yy} y_{t-1} + \phi_{yz} z_{t-1} + \delta_{t} \\
+z_{t} &= \phi_{zy} y_{t-1} + \phi_{zz} z_{t-1} + \nu_{t}
+\end{aligned}
+$$
+
+\vspace{5mm}
+
+\textbf{NB:} this is a Vector autoregressive model of order 1, or a VAR(1) model.
+
+
+### {-}
+
+\vspace{5mm}
+
+\textbf{Note:} both lagged $y$ and lagged $z$ appear in each equation. 
+
+\vspace{5mm}
+
+Thus, the VAR(1) captures cross-variable dynamics. 
+
+\vspace{8mm}
+
+\textbf{Ex:} It could capture the fact that if volume is higher in one trading period, volatility tends to be higher the following trading period; as well as the fact that if volatility is high one period volume tends to be high the next period. 
+
+
+### {-}
+
+\vspace{2mm}
+
+We can write the VAR(1) in lag operator notation:
+
+\vspace{5mm}
+
+$$
+(I - \Phi L) x_{t} = \varepsilon_{t}
+$$
+
+or 
+
+$$
+A(L) x_{t} = B(L) \varepsilon_{t}
+$$
+
+\vspace{5mm}
+
+where: 
+
+\vspace{2mm}
+
+* $A(L) = I - \Phi_{1} L - \Phi_{2} L^{2} - \cdots$
+
+* $B(L) = I + \Theta_{1} L + \Theta_{2} L^{2} + \cdots$
+
+\vspace{4mm}
+
+__NB:__ $\Phi_{j} = \begin{bmatrix} \phi_{j,yy} & \phi_{j, yz} \\ \phi_{j,zy} & \phi_{j,zz} \end{bmatrix}$ and similarly for $\Theta_{j}$.
+
+
+### {-} 
+
+\vspace{2mm}
+
+We can invert multivariate ARMA models. 
+
+\vspace{5mm}
+
+For example, the MA($\infty$) representation can be obtained from the VAR(1) as
+
+\vspace{3mm}
+
+$$
+(I - \Phi L) x_{t} = \varepsilon_{t}  \quad \Leftrightarrow \quad (I - \Phi L)^{-1} \varepsilon_{t} = \sum\limits_{j=0}^{\infty} \Phi^{j} \varepsilon_{t-j}
+$$
+
+
+### Autocorrelation and Autocovariance Functions {-}
+
+\vspace{2mm}
+
+__Autocovariance__ of a series $x_{t}$ is
+
+\vspace{3mm}
+
+$$
+\gamma_{j} = Cov(x_{t}, x_{t-j})
+$$
+
+\vspace{5mm}
+
+Hence, h
+
+$$
+\gamma_{j} = E(x_{t} x_{t-j})
+$$
+
+\vspace{3mm}
+
+__NB:__ $\gamma_{0} = Var(x_{t})$
+
+\vspace{2mm}
+
+__NB:__ Recall $Cov(x_{t}, x_{t-j}) = E[(x_{t} - E(x_{t}))(x_{t-j} - E(x_{t-j}))]$ but $E(x_{t}) = 0$ for our purposes.
+
+
+### {-}
+
+\vspace{3mm}
+
+__Autocorrelation__ is:
+
+$$
+\rho_{j} = \frac{\gamma_{j}}{Var(x_{t})} = \frac{\gamma_{j}}{\gamma_{0}}
+$$
+
+\vspace{5mm}
+
+___Autocovariance and Autocorrelation of ARMA Processes___
+
+\vspace{2mm}
+
+White noise: since we assume $\varepsilon_{t} \sim \mbox{ iid } N(0,\sigma_{\varepsilon}^{2})$, it's clear  that
+
+$$
+\gamma_{0} = \sigma_{\varepsilon_{t}}^{2}, \quad \gamma_{j} = 0 \quad \mbox{for all} \quad j \ne 0
+$$
+
+\vspace{2mm}
+
+$$
+\rho_{0} = 1, \quad \rho_{j} = 0 \quad \mbox{for all} \quad j \ne 0
+$$
+
+
+### MA(1) {-}
+
+\vspace{2mm}
+
+$$
+x_{t} = \varepsilon_{t} + \theta \varepsilon_{t-1}
+$$
+
+\vspace{5mm}
+
+Autocovariance:
+
+\vspace{3mm}
+
+$$
+\begin{aligned}
+\gamma_{0} &= Var(x_{t}) = Var(\varepsilon_{t} + \theta \varepsilon_{t-1}) \\
+           &= \sigma_{\varepsilon}^{2} + \theta^{2} \sigma_{\varepsilon}^{2} \\ 
+           &= (1 + \theta^{2}) \sigma_{\varepsilon}^{2} \\
+\gamma_{1} &= E(x_{t} x_{t-1}) = E[(\varepsilon_{t} + \theta \varepsilon_{t-1}) (\varepsilon_{t-1} + \theta \varepsilon_{t-2})] \\
+           &= E[\theta \varepsilon_{t-1}^{2}] \\
+           &= \theta \sigma_{\varepsilon}^{2} \\
+\end{aligned}
+$$
+
+### {-}
+
+\vspace{5mm}
+
+$$
+\begin{aligned}
+\gamma_{2} &= E(x_{t} x_{t-2}) = E[(\varepsilon_{t} + \theta \varepsilon_{t-1}) (\varepsilon_{t-1} + \theta \varepsilon_{t-3})] = 0 \\
+\gamma_{3} &= 0
+\end{aligned}
+$$
+
+\vspace{6mm}
+
+Autocorrelation
+
+$$
+\begin{aligned}
+\rho_{1} &= \frac{\theta}{1 + \theta^{2}} \\
+\rho_{2} &= 0
+\end{aligned}
+$$
+
+
+### MA(2) {-}
+
+\vspace{2mm}
+
+$$
+x_{t} = \varepsilon_{t} + \theta_{1} \varepsilon_{t-1} + \theta_{2} \varepsilon_{t-2}
+$$
+
+\vspace{5mm}
+
+Autocovariance:
+
+\vspace{2mm}
+
+$$
+\begin{aligned}
+\gamma_{0} &= E[(\varepsilon_{t} + \theta_{1} \varepsilon_{t-1} + \theta_{2} \varepsilon_{t-2})(\varepsilon_{t} + \theta_{1} \varepsilon_{t-1} + \theta_{2} \varepsilon_{t-2})] \\
+           &= (1 + \theta_{1}^{2} + \theta_{2}^{2}) \sigma_{\varepsilon}^{2} \\
+		   & \\
+\gamma_{1} &= E[(\varepsilon_{t} + \theta_{1} \varepsilon_{t-1} + \theta_{2} \varepsilon_{t-2})(\varepsilon_{t-1} + \theta_{1} \varepsilon_{t-2} + \theta_{2} \varepsilon_{t-3})] \\
+           &= (\theta_{1} + \theta_{1}\theta_{2}) \sigma_{\varepsilon}^{2} \\
+		   & \\
+\gamma_{3}, \gamma_{4}, \ldots &= 0 \\
+\end{aligned}
+$$
+
+
+### {-} 
+
+\vspace{2mm}
+
+Autocorrelation: 
+
+\vspace{3mm}
+
+$$
+\begin{aligned}
+\rho_{0} &= 1 \\
+         &    \\
+\rho_{1} &= \frac{\theta_{1} + \theta_{1} \theta_{2}}{(1 + \theta_{1}^{2} + \theta_{2}^{2})} \\
+         & \\
+\rho_{2} &= \frac{\theta_{2}}{(1 + \theta_{1}^{2} + \theta_{2}^{2})} \\
+         & \\
+\rho_{3}, \rho_{4}, \ldots &= 0
+\end{aligned}
+$$
+
+
+### MA(q), MA($\infty$) {-}
+
+By now the pattern is clear: MA(q) processes have q autocorrelations different from zero. Also, if
+
+$$
+x_{t} = \theta(L) \varepsilon_{t} = \sum\limits_{j=0}^{\infty} (\theta_{j} L^{j}) \varepsilon_{t}
+$$
+
+then 
+
+$$
+\begin{aligned}
+\gamma_{0} &= Var(x_{t}) = \left( \sum\limits_{j=0}^{\infty} \theta_{j}^{2} \right) \sigma_{\varepsilon}^{2} \\
+\gamma_{k} &= \sum\limits_{j=0}^{\infty} \theta_{j} \theta_{j+k} \sigma_{\varepsilon}^{2}
+\end{aligned}
+$$
+
+\vspace{1mm}
+
+__NB:__ $\theta_{0} = 1$
+
+\vspace{1mm}
+
+__NB:__ The lesson is that calculation of 2nd moments for MA processes is easy. Because covariance terms
+$E(\varepsilon_{j} \varepsilon_{k})$ drop out!
+
+
+
+### AR(1) {-}
+
+Two ways to proceed: 
+
+\vspace{1.5mm}
+
+1. Invert the MA($\infty$) and use the above
+
+$$
+(1 - \phi L) x_{t} = \varepsilon_{t} \Rightarrow x_{t} = (1 - \phi L)^{-1} \varepsilon_{t} = \sum\limits_{j=0}^{\infty} \phi^{j} \varepsilon_{t-j} 
+$$
+
+\vspace{1.5mm}
+
+$$
+\begin{aligned}
+\gamma_{0} &= \left(\sum\limits_{j=0}^{\infty} \phi^{2j}\right) \sigma_{\varepsilon}^{2} = \frac{1}{1 - \phi^{2}} \sigma_{\varepsilon}^{2}; \quad \rho_{0} = 1 \\
+           & \\
+\gamma_{1} &= \left(\sum\limits_{j=0}^{\infty} \phi^{j} \phi^{j+1} \right) \sigma_{\varepsilon}^{2} = \phi \left( \sum\limits_{j=0}^{\infty} \phi^{2j} \right) \sigma_{\varepsilon}^{2}  = \frac{\phi}{1 - \phi^{2}}\sigma_{\varepsilon}^{2}; \quad \rho_{1} = \phi \\
+\end{aligned}
+$$
+
+
+### {-}
+
+Continuing
+
+$$
+\begin{aligned}
+\gamma_{k} &= \frac{\phi^{k}}{1 - \phi^{2}} \sigma_{\varepsilon}^{2}; \quad \rho_{k} = \phi^{k}
+\end{aligned}
+$$
+
+\vspace{3mm}
+
+2. Another way useful in it's own right
+
+$$
+\begin{aligned}
+\gamma_{1} &= E(x_{t} x_{t-1}) = E[(\phi x_{t-1} + \varepsilon_{t}) (x_{t-1})] = \phi \sigma_{x}^{2}; \quad \rho = \phi \\
+           & \\
+\gamma_{2} &= E(x_{t} x_{t-2}) = E[(\phi^{2} x_{t-2} + \phi \varepsilon_{t-1} + \varepsilon_{t}) (x_{t-2})] = \phi^{k} \sigma_{x}^{2}; \quad \rho_{k} = \phi^{k} 
+\end{aligned}
+$$
+
+
+### AR(p) Yule-Walker Equations {-}
+
+\vspace{5mm}
+
+This latter method is the easiest way to proceed for AR(p)'s. 
+
+\vspace{15mm}
+
+Let's look at an AR(3), then you can generalize.
+
+
+### {-}
+
+\vspace{2mm}
+
+Multiplying both sides by $x_{t}, x_{t-1}, \cdots$, taking expectations, then dividing by $\gamma_{0}$ we obtain
+
+\vspace{3mm}
+
+$$
+\begin{aligned}
+1 &= \phi \rho_{1} + \phi_{2} \rho_{2} + \phi_{3} \rho_{3} + \frac{\sigma_{\varepsilon}^{2}}{\gamma_{0}} \\
+  & \\
+\rho_{1} &= \phi_{1} + \phi_{2} \rho_{1} + \phi_{3} \rho_{2}             \\
+  & \\
+\rho_{2} &= \phi_{1}\rho_{1} + \phi_{2} + \phi_{3} \rho_{1}              \\
+  & \\
+\rho_{3} &= \phi_{1}\rho_{2} + \phi_{2}\rho_{1} + \phi_{3}               \\
+  & \\
+\rho_{k} &= \phi_{1}\rho_{k-1} + \phi_{2}\rho_{k-2} + \phi_{3}\rho_{k-3} \\
+\end{aligned}
+$$
+
+
+
+### {-} 
+
+\vspace{2mm}
+
+The 2nd, 3rd, and 4th equations can be solved for $\rho_{1}$, $\rho_{2}$, $\rho_{3}$.
+
+\vspace{6mm}
+
+Then each remaining equation gives $\rho_{k}$ in terms of $\rho_{k-1}$ and $\rho_{k-2}$, so we can solve for all of the $\rho$'s.
+
+\vspace{6mm}
+
+__Note:__ The $\rho$'s follow the same difference equation as the original $x$'s
+
+\vspace{6mm}
+
+The first equation can be solved for the variance
+
+\vspace{6mm}
+
+$$
+\sigma_{x}^{2} = \gamma_{0} = \frac{\sigma_{\varepsilon}^{2}}{1 - [\phi_{1} \rho_{1} + \phi_{2} \rho_{2} + \phi_{3} \rho_{3}]}
+$$
+
+
+### Stationarity {-}
+
+\vspace{3mm}
+
+In calculating the moments of ARMA processes, the moments did not depend on calendar time
+
+\vspace{4mm}
+
+$$
+\begin{aligned}
+E(x_{t})         &= E(x_{s}) \quad \quad \mbox{for all $t$ and $s$}         \\
+E(x_{t} x_{t-j}) &= E(x_{s} x_{s-j}) \quad \mbox{for all $t$ and $s$} \\
+\end{aligned}
+$$
+
+\vspace{6mm}
+
+These properties are true for the invertible ARMA models, but they reflect a deeper property.
+
+
+### {-}
+
+\vspace{2mm}
+
+A process $\{x_{t}\}$ is __strongly stationary__ or __strictly stationary__ if the joint probability distribution function of $\{x_{t-s}, \cdots, x_{t}, \cdots, x_{t+s}\}$ is independent of $t$ for all $s$.
+
+\vspace{10mm}
+
+A process $\{x_{t}\}$ is __weakly stationary__ or __covariance stationary__ if $E(x_{t})$, $E(x_{t}^{2})$ are finite and $E(x_{t} x_{t-j})$ depends only on $j$ and not on $t$.
+
+
+### {-}
+
+\vspace{2mm}
+
+__Note That:__
+
+\vspace{5mm}
+
+1. Strong stationary does not imply weak stationarity. $E(x_{t}^{2})$ must be finite.
+    - Ex: on iid Cauchy process is strongly, but not covariance stationary. 
+
+\vspace{2mm} 
+
+2. Strong stationarity plus $E(x_{t}), E(x_{t}^{2}) < \infty \Rightarrow$ weak stationarity
+
+\vspace{2mm}
+
+3. Weak stationarity does not $\Rightarrow$ strong stationarity. If the process is not normal, other
+   moments $\left(E(x_{t} x_{t-j} x_{t-k})\right)$ _might_ depend on $t$, so the process might not be 
+   strongly stationary.
+
+\vspace{2mm}
+
+4. Weak stationarity plus normality $\Rightarrow$ strong stationarity
+
+\pagebreak
+
+<!--chapter:end:05-module3-04-time-series-2.Rmd-->
+
+## Time Series Notes III {-}
+
+\vspace{5mm}
+
+### Unit Roots {-}
+
+\vspace{2mm}
+
+This basic random walk is 
+
+\vspace{2mm}
+
+$$
+x_{t} = x_{t-1} + \varepsilon_{t}
+$$
+
+\vspace{2mm}
+
+with
+
+\vspace{2mm}
+
+$$
+E_{t-1}(\varepsilon_{t}) = 0
+$$
+
+\vspace{5mm}
+
+Note the property: 
+
+\vspace{3mm}
+
+$$
+E_{t}(x_{t+1}) = x_{t}
+$$
+
+
+### {-}
+
+\vspace{2mm}
+
+Because of this property random walks are a popular model for asset prices. 
+
+\vspace{5mm}
+
+Notice: the random walk is a special case of the AR(1) model in which $\phi = 1$
+
+\vspace{2mm}
+
+$$
+x_{t} = \phi x_{t-1} + \varepsilon_{t}
+$$
+
+\vspace{5mm}
+
+__Ex:__ 
+
+\vspace{2mm}
+
+* $x_{0}$, the initial value of the series is a real number denoting the starting value of the process. 
+
+* If $x_{t}$ is the log-price of a stock then $x_{0}$ would be the log-price of the stock at its initial public offering (IPO).
+
+
+### {-}
+
+\vspace{5mm}
+
+If $\varepsilon_{t}$ has a symmetric distribution (normal, t, etc) around zero, then conditional on $x_{t-1}$, $x_{t}$ has a 50-50 chance to go up or down, implying that $x_{t}$ would go up or down at random.
+
+\vspace{10mm}
+
+__NB:__ this fits well the economics of the Efficient Markets Hypothesis (EMH). Early tests of the EMH were essentially tests for a random walk.
+
+
+
+### {-}
+
+\vspace{2mm}
+
+Within the AR(1) framework $\phi = 1$, which does not satisfy the weak-stationarity assumption. A Random walk is not weakly stationary, and we call it a unit-root nonstationary time series. 
+
+\vspace{6mm}
+
+Under the random walk model of (log) stock prices the price is not predictable or mean-reverting.
+
+\vspace{6mm}
+
+
+We will take a small detour regarding forecasting to show this. 
+
+
+### Forecasting {-}
+
+\vspace{2mm}
+
+Forecasting is an important application of time series analysis. 
+
+\vspace{3mm}
+
+For the AR(p) model:
+
+\vspace{2mm}
+
+* Suppose we are at the time index $h$ and interested i n forecasting $x_{h+l}$, where $l \ge 1$.
+
+\vspace{1.5mm}
+
+* The time index $h$ is called the forecast origin 
+
+\vspace{1.5mm}
+
+* The positive integer $l$ is called the forecast horizon.
+
+
+### {-} 
+
+Let $\hat{x}_{h}(l)$ be the forecast of $x_{h+l}$ using  the minimum squared error loss function and $F_{n}$ be the collection of information available at the forecast origin $h$. Then the forecast $\hat{x}_{h}(l)$ is chosen such that
+
+\vspace{5mm}
+
+$$
+E\{[x_{h+l} - \hat{x}_{h}(l)]^{2} \enskip | \enskip F_{h} \} \enskip \le \enskip \min_{g} E[(x_{h+l} - g)^{2} \enskip | \enskip F_{h}]
+$$
+
+\vspace{5mm}
+
+where $g$ is a function of the information available at time $h$ (inclusive), that is a function of $F_{h}$.
+
+
+### {-}
+
+\vspace{2mm}
+
+We refer to $\hat{x}_{h}(l)$ as the $l$-step ahead forecast of $x_{t}$ at the forecast origin $h$.
+
+\vspace{8mm}
+
+__1-Step Ahead Forecast__
+
+\vspace{3mm}
+
+$$
+x_{h+1} = \phi_{0} + \phi_{1} x_{h} + \ldots + \phi_{p} x_{h+1-p} + \varepsilon_{h+1}
+$$
+
+\vspace{5mm}
+
+Under the minimum squared error loss function, the point forecast of $x_{h+1}$ given $F_{h} = \{x_{h}, x_{h-1}, \cdots \}$ is --
+
+
+### {-} 
+
+\vspace{2mm}
+
+the conditional expectation
+
+\vspace{2mm}
+
+$$
+\hat{x}_{h}(1) = E\left(x_{h+1} | x_{h} \right) = \phi_{0} + \sum\limits_{i=1}^{p} \phi_{i} x_{h+1-i}
+$$
+
+\vspace{2mm}
+
+and the associated forecast error is
+
+$$
+e_{h}(1) = x_{h+1} - \hat{x}_{h}(1) = \varepsilon_{h+1}
+$$
+
+\vspace{5mm}
+
+The variance of the $1$-step ahead forecast error is
+
+$$
+Var[e_{h}(1)] = Var(\varepsilon_{h+1}) = \sigma_{\varepsilon}^{2}
+$$
+
+
+
+### {-}
+
+\vspace{2mm}
+
+If $\varepsilon_{t}$ is normally distributed, then a $95\%$ $1$-step ahead interval forecast of $x_{h+1}$ is $\hat{x}_{h}(1) \pm 1.96 \sigma_{\varepsilon}$
+
+\vspace{5mm}
+
+In econometrics $\varepsilon_{t+1}$ is often referred to as the shock to the series at time $t+1$
+
+\vspace{8mm}
+
+__2-Step Ahead__
+
+\vspace{2mm}
+
+Next consider $x_{h+2}$ at the forecast origin $h$. From the AR(p) model we have 
+
+\vspace{2mm}
+
+$$
+x_{h+2} = \phi_{0} + \phi_{1} x_{h+1} + \cdots + \phi_{p} x_{h+2-p} + \varepsilon_{h+2}
+$$
+
+
+### {-}
+
+\vspace{2mm}
+
+Taking conditional expectation, we get
+
+\vspace{3mm}
+
+$$
+\hat{x}_{h}(2) = E\left(x_{h+2} | F_{h} \right) = \phi_{0} + \phi_{1} \hat{x}_{h}(l) + \phi_{2} x_{h} + \cdots + \phi_{p} x_{h+2-p}
+$$
+
+\vspace{3mm}
+
+and forecast error
+
+$$
+e_{h}(2) = x_{h+2} - \hat{x}_{h}(2) - \phi_{1}[x_{h+1} - \hat{x}_{h}(1)] + \varepsilon_{h+2} = \varepsilon_{h+2} + \phi_{1} \varepsilon_{h+1}
+$$
+
+\vspace{5mm}
+
+The variance of the forecast error is
+
+\vspace{3mm}
+
+$$
+\begin{aligned}
+Var[e_{h}(2)] &= Var(\varepsilon_{h+2} + \phi \varepsilon_{h+1}) \\
+              &= (1 + \phi_{1}^{2}) \sigma_{\varepsilon}^{2}
+\end{aligned}
+$$
+
+
+
+### {-}
+
+\vspace{2mm}
+
+__Note:__ $Var[e_{h}(2)] \ge Var[e_{h}(1)]$
+
+\vspace{3mm}
+
+Common sense tells us we are more uncertain about $x_{h+2}$ than about $x_{h+1}$ at time index $h$.
+
+\vspace{8mm}
+
+__Multi-Step Ahead__
+
+\vspace{3mm}
+
+In general
+
+\vspace{3mm}
+
+$$
+x_{h+l} = \phi_{0} + \phi_{1} x_{h+l-1} + \cdots + \phi_{p} x_{h+l-p} + \varepsilon_{h+l}
+$$
+
+\vspace{3mm}
+
+and
+
+\vspace{2mm}
+
+$$
+\hat{x}_{h}(l) = \phi_{0} + \sum\limits_{i=1}^{p} \phi_{i} \hat{x}_{h}(l - i)
+$$
+
+
+### {-}
+
+\vspace{2mm}
+
+The $l$-step ahead forecast error is
+
+\vspace{4mm}
+
+$$
+e_{h}(l) = x_{h+l} - \hat{x}_{h}(l)
+$$
+
+\vspace{10mm}
+
+* It can be shown that for a stationary AR(p) model, $\hat{x}_{h}(l)$ converges to $E(x_{t})$ as $l \rightarrow \infty$
+
+\vspace{3mm}
+
+* This has the meaning that for such a series the long-term point forecast approaches the unconditional mean.
+
+
+
+### Forecasting with MA Models {-}
+
+\vspace{2mm}
+
+__1-Step Ahead (for MA(1))__
+
+\vspace{3mm}
+
+$$
+x_{h+1} = \mu + \varepsilon_{h+1} - \theta_{1} \varepsilon_{h}
+$$
+
+\vspace{3mm}
+
+Taking the conditional expectation we have
+
+\vspace{3mm}
+
+$$
+\hat{X}_{h}(l = 1) = E\left( x_{h+1} | F_{h}\right) = \mu - \theta_{1} \varepsilon_{h}
+$$
+
+\vspace{3mm}
+
+$$
+e_{h}(1) = x_{h+1} - \hat{x}_{h}(1) = \varepsilon_{h+1}
+$$
+
+\vspace{3mm}
+
+$$
+Var[e_{h}(1)] = \sigma_{\varepsilon}^{2}
+$$
+
+
+
+### {-}
+
+\vspace{2mm}
+
+__2-Step Ahead__
+
+\vspace{3mm}
+
+$$
+\begin{aligned}
+x_{h+2} &= \mu + \varepsilon_{h+2} - \phi \varepsilon_{h+1} \\
+        & \\
+\mbox{We have} \\
+        & \\
+\hat{X}_{h}(l = 2) &= E\left( x_{h+2} | F_{h}\right) = \mu \\
+        & \\
+e_{h}(2) &= x_{h+2} - \hat{x}_{h}(2) = \varepsilon_{h+2} - \theta \varepsilon_{h+1} \\
+         & \\ 
+Var[e_{h}(2)] &= (1 + \theta_{1}^{2}) \sigma_{\varepsilon}^{2}
+\end{aligned}
+$$
+
+\vspace{4.5mm}
+
+__NB:__ $\varepsilon_{h+1} = x_{h+1} - \mu + \theta_{1} \varepsilon_{h}$
+
+\vspace{1.5mm}
+
+__NB:__ $E(x_{h+1}) = \mu - \theta_{1} \varepsilon_{t} - \mu + \theta_{1} \varepsilon_{h} = 0$
+
+
+### {-}
+
+\vspace{2mm}
+
+Note: The $2$-step ahead forecast is simply the unconditional mean of the model. This is true for any forecast origin $h$.
+
+\vspace{8mm}
+
+More generally, $\hat{X}_{h}(l) = \mu$ for $l \ge 2$. Thus for any MA(1) mean reversion take only $1$ time period.
+
+\vspace{8mm}
+
+Similarly for an MA(2) we have
+
+\vspace{5mm}
+
+$$
+x_{h+l} = \mu + \varepsilon_{h+l} - \theta_{1} \varepsilon_{h+l-1} - \theta_{2} \varepsilon_{h+l-2}
+$$
+
+
+
+### {-}
+
+\vspace{3mm}
+
+And we obtain
+
+\vspace{10mm}
+
+$$
+\begin{aligned}
+\hat{X}_{h}(1) &= \mu - \theta_{1} \varepsilon_{h} - \theta_{2} \varepsilon_{h+l-2} \\
+& \\
+\hat{X}_{h}(2) &= \mu - \theta_{2} \varepsilon_{h} \\
+& \\
+\hat{X}_{h}(l) &= \mu \quad \mbox{for} \quad l \ge 2 \\
+\end{aligned}
+$$
+
+
+### {-} 
+
+\vspace{2mm}
+
+Now back to the random walk model:
+
+\vspace{3mm}
+
+$$
+x_{t} = x_{t-1} + \varepsilon_{t}
+$$
+
+\vspace{8mm}
+
+
+__1-Step Ahead Forecast__
+
+\vspace{4mm}
+
+$$
+\hat{X}_{h}(1) = E\left[x_{h+1} | x_{h}, x_{h-1}, \ldots \right] = x_{h}
+$$
+
+\vspace{5mm}
+
+which is the log stock price at the forecast origin, or in other words the best guess for tomorrow's closing stock price is today's closing stock price. Or the current stock price contains all relevant information regarding the firm. 
+
+\vspace{2mm}
+
+__Note:__ $F_{h} = \{x_{h}\}$
+
+
+
+### {-}
+
+\vspace{2mm}
+
+__2-Step Forecast__
+
+\vspace{3mm}
+
+$$
+\begin{aligned}
+\hat{X}_{h}(2) &= E\left[x_{h+2} \enskip | \enskip x_{h}, x_{h-1}, \ldots \right] = E\left[x_{h+1} + \varepsilon_{h+2} \enskip | \enskip x_{h}, x_{h-1}, \ldots \right] \\
+               &= E\left[x_{h+1} \enskip | \enskip x_{h}, x_{h-1}, \ldots \right] = \hat{X}_{h}(1) = x_{h}
+\end{aligned}
+$$
+
+\vspace{10mm}
+
+This is true for any forecast horizon
+
+\vspace{3mm}
+$$
+\hat{X}_{h}(l) = x_{h}
+$$
+
+
+
+### {-}
+
+\vspace{2mm}
+
+The MA representation of the random walk model is
+
+\vspace{2mm}
+
+$$
+x_{t} = \varepsilon_{t} + \varepsilon_{t-1} + \varepsilon_{t-2} + \cdots
+$$
+
+\vspace{5mm}
+
+The representation has several important implications.
+
+\vspace{4mm}
+
+$(1.)$ The $l$-step ahead forecast error is
+
+\vspace{1mm}
+
+$$
+\begin{aligned}
+e_{h}(l) &= \varepsilon_{h+1} + \cdots + \varepsilon_{h+1} \\
+& \\
+\mbox{so that} \\
+&* \\
+Var[e_{h}(l)] &= l \sigma_{\varepsilon}^{2} \quad \mbox{(which diverges to infinity as $l \rightarrow \infty$)}
+\end{aligned}
+$$
+
+
+### {-}
+
+\vspace{2mm}
+
+$(2.)$ The uncondtional variance of $x_{t}$ is unbounded because $Var[e_{h}(l)]$ approaches infinity as $l$ increases.
+
+\vspace{8mm}
+
+__Random Walk with Drift__
+
+\vspace{3mm}
+
+$$
+\begin{aligned}
+x_{t} &= \mu + x_{t-1} + \varepsilon_{t} \\
+      & \\
+\mbox{ where } \mu &= E\left(x_{t} - x_{t-1} \right) \\
+      & \\
+\end{aligned}
+$$
+
+\vspace{8mm}
+
+In finance (and macro) $\mu$ can be important. It is called the drift. 
+
+
+### {-}
+
+\vspace{2mm}
+
+To see this
+
+\vspace{5mm}
+
+$$
+\begin{aligned}
+x_{1}  &= \mu + x_{0} + \varepsilon_{1} \\
+       & \\
+x_{2}  &= \mu + x_{1} + \varepsilon_{2} = 2\mu + x_{0} + \varepsilon_{2} + \varepsilon_{1} \\
+       & \\
+\vdots  \\
+       & \\
+x_{t}  &= t\mu + x_{0} + \varepsilon_{t} + \varepsilon_{t-1} + \cdots + \varepsilon_{1} 
+\end{aligned}
+$$
+
+\pagebreak
+
+<!--chapter:end:05-module3-05-time-series-3.Rmd-->
+
+## Time Series Notes IV {-}
+
+\vspace{5mm}
+
+### Unit Roots Continued {-}
+
+\vspace{2mm}
+
+The random walk with drift
+
+\vspace{3mm}
+
+$$
+x_{t} = \mu + x_{t-1} + \varepsilon_{t}
+$$
+
+\vspace{8mm}
+
+where $\mu = E(x_{t} - x_{t-1}) = \mu$ and $\{\varepsilon_{t}\}$ is white noise. The constant term $\mu$ represents the time trend of $x_{t}$ and is called the drift. 
+
+
+
+### {-}
+
+\vspace{2mm}
+
+Assume the initial value of $x_{t}$ is $x_{0}$, then
+
+$$
+\begin{aligned}
+x_{1}  &= \mu + x_{0} + \varepsilon_{1} \\
+& \\
+x_{2}  &= \mu + x_{1} + \varepsilon_{2} = 2 \mu + x_{0} + \varepsilon_{1} + \varepsilon_{2} \\
+& \\
+\vdots  \\
+& \\
+x_{t}  &= t \mu + x_{0} + \varepsilon_{t} + \varepsilon_{t-1} + \cdots + \varepsilon_{1} 
+\end{aligned}
+$$
+
+\vspace{5mm}
+
+The last equation shows that $\{x_{t}\}$ consists of a time trend $t\mu$ and a pure random-walk process $\sum\limits_{i=1}^{t} \varepsilon_{i}$.
+
+
+### {-}
+
+\vspace{2mm}
+
+$Var(\sum\limits_{i=1}^{t} \varepsilon_{i}) = t\sigma_{\varepsilon}^{2}$ where $\sigma_{\varepsilon}^{2}$ is the variance of $\varepsilon_{t}$.
+
+\vspace{8mm}
+
+The conditional standard deviation of $x_{t}$ is $\sqrt{t} \sigma_{\varepsilon}^{2}$, which grows at a slower rate than the conditional expectation of $x_{t}$. Therefore, if we graph $x_{t}$ against the time index $t$, we have a time trend with slope $\mu$
+
+\vspace{8mm}
+
+Let's look at some actual market data for IBM from 1947 to 1997.
+
+
+### Trend-Stationary Time Series {-}
+
+\vspace{2mm}
+
+A closely related model that exhibits linear trend is the trend-stationary time series model:
+
+\vspace{2mm}
+
+$$
+x_{t} = \beta_{0} + \beta_{1} t + z_{t}
+$$
+
+\vspace{5mm}
+
+where $z_{t}$ is a stationary time series (e.g. a stationary AR(p) series). Here $x_{t}$ grows linearly in time with rate $\beta_{1}$ and hence can exhibit behavior similar to a random walk with drift. 
+
+
+
+### {-} 
+
+\vspace{2mm}
+
+There is one major difference between the random walk with drift and the trend-stationary series: 
+
+\vspace{2mm}
+
+__Random Walk with Drift__
+
+\vspace{2mm}
+
+$$
+\begin{aligned}
+E(x_{t})  &= x_{0} + \mu t \quad \mbox{and} \\
+Var(x_{t} &= t \sigma_{\varepsilon}^{2} 
+\end{aligned}
+$$
+
+\vspace{2mm}
+
+which clearly is not stationary because the variance is directly time dependent. While
+
+\vspace{2mm}
+
+__Trend-Stationary Series__
+
+\vspace{2mm}
+
+$$
+\begin{aligned}
+E(x_{t})  &= \beta_{0} + \beta_{1} t \quad \mbox{and} \\
+Var(x_{t} &= Var(z_{t})
+\end{aligned}
+$$
+
+\vspace{2mm}
+
+which is finite and time-independent.
+
+
+### General Unit-Root Nonstationary Models {-}
+
+\vspace{2mm}
+
+Consider an ARMa model. If we extend the model by allowing the AR polynomial to have $1$ as a characteristic root, then the model becomes the Autoregressive Integrated Moving Average (ARIMA) model. 
+
+\vspace{8mm}
+
+An ARIMA model is said to be unit-root nonstationary because its AR polynomial has a unit root. 
+
+\vspace{8mm}
+
+A conventional approach for handling unit-root nonstationarity is differencing. 
+
+
+### Differencing {-}
+
+\vspace{2mm}
+
+A time series $x_{t}$ is said to be an ARIMA(p,1,q) process if the change series
+
+\vspace{3mm}
+
+$$
+c_{t} = x_{t} - x_{t-1} = (1 - L) x_{t}
+$$
+
+\vspace{2mm}
+
+follows a stationary and invertible ARMA(p,q) process. 
+
+\vspace{8mm}
+
+__Ex:__ in finance price series are commonly believed to be nonstationary, but the log-return series $r_{t} = \ln{(p_{t})} - \ln{(p_{t-1})}$ is stationary. Here the price series $\{p_{t}\}$ is unit-root nonstationary and hence can be treated as an ARIMA process. 
+
+
+### 
+
+\vspace{2mm}
+
+The idea of transforming a nonstationary series into a stationary one by considering its change series is called _differencing_ in the time series literature.
+
+\vspace{5mm}
+
+Formally, $c_{t} = x_{t} - x_{t-1}$ is referred to as the first differenced series of $x_{t}$.
+
+\vspace{8mm}
+
+In some fields a time series $x_{t}$ may contain multiple unit roots. For example, if both $x_{t}$ and its first differenced series $c_{t} = x_{t} - x_{t-1}$ are unit-root nonstationary, but $s_{t} = c_{t} - c_{t-1} = x_{t} - 2 x_{t-1} + x_{t-2}$ is weakly stationary, then $x_{t}$ has double unit roots, and $s_{t}$ is the second differenced series of $x_{t}$.
+
+
+### {-}
+
+\vspace{2mm}
+
+If $s_{t}$ follows an ARMA(p,q) model then $x_{t}$ is an ARIMA(p, 2, q) process.
+
+\vspace{5mm}
+
+__Testing For Unit Roots__
+
+\vspace{3.5mm}
+
+__Q:__ Do economic variables such as GNP, employment, and interet rates tend to revert back to a long-run trend after a shock, or do they follow random walks?
+
+\vspace{3.5mm}
+
+The question is important for two reasons:
+
+\vspace{2mm}
+
+1. If these variables follow random walks, a regression of one against another can lead to spurious results. 
+
+
+### {-}
+
+\vspace{2mm}
+
+For example, suppose two series are generated by independent random walks: 
+
+\vspace{2mm}
+
+$$
+\begin{aligned}
+x_{t} &= x_{t-1} + \epsilon_{t} \\
+& \\
+y_{t} &= y_{t-1} + \nu_{t} \\
+& \\
+\mbox{and } &  E(\epsilon_{t} \nu_{t}) = 0 \mbox{ for all $t$, $s$}.
+\end{aligned}
+$$
+
+\vspace{8mm}
+
+Now suppose we run $y_{t}$ on $x_{t}$ by OLS
+
+
+
+### {-}
+
+\vspace{3mm}
+
+$$
+y_{t} = \alpha + \beta x_{t} + u_{t}
+$$
+
+\vspace{5mm}
+
+The assumptions underlying the CLRM are violated. In this case you tend to see "significant" $\beta$ more often than the OLS formula say you should.
+
+\vspace{5mm}
+
+2. If affects our understanding of the economy and our ability to make forecasts: 
+
+    - If a variable such as GNP follows a random walk, then the effects of a temporary shock (e.g. increase in oil prices or an increase in government spending)
+      not dissapate after several years but will instead have permanent effects. 
+    - If stock prices follow random walks they should not be forecastable.
+    
+    
+### Nelson & Plosser {-}
+
+\vspace{2mm}
+
+NP found evidence that GNP and other macro variables behave like random walks. This spurred a huge literature to investigate whether or not economic and financial variables are random walks or are trend-reverting. Several of these studies show that many economic time series do appear to be random walks or at least have random walk components. 
+
+
+
+### {-} 
+
+\vspace{2mm}
+
+Most of these studies use unit-root tests introduced by Dicky & Fuller (1979) JASA. 
+
+\vspace{5mm}
+
+Suppose we believe that a variable $Y_{t}$, which has been growing over time, can be described by the following equation:
+
+\vspace{3mm}
+
+$$
+Y_{t} = \alpha + \beta t + \rho Y_{t-1} + \epsilon_{t}
+$$
+
+\vspace{5mm}
+
+One possibility is that $Y_{t}$ has been growing because $Y_{t}$ has a positive time trend ($\beta > 0$) but would be stationary after detrending (i.e. $\rho < 1$) In this case $Y_{t}$ could be used in a regression and all of the results and tests of the CLRM would apply. 
+
+
+### {-} 
+
+\vspace{2mm}
+
+Another possibility is that $Y_{t}$ has been growing because it follows a random walk with a positive drift (i.e. $\alpha > 0$, $\beta = 0$, and $\rho = 1$). In this case we would need to work with $\Delta Y_{t}$ (change series).
+
+\vspace{5mm}
+
+Detrending would not make the series stationary, and the inclusion of $Y_{t}$ in a regression would lead to spurious results. 
+
+\vspace{5mm}
+
+One might think that the equation could be estimated by OLS and that the $t$ statistic on $\hat{\rho}$ could be used to test $H_{0}: \rho = 1$. However, if the true value is indeed $1$ then OLS would lead to spurious results, which could mean we could incorrectly reject the random walk hypothesis. 
+
+
+### {-}
+
+\vspace{2mm}
+
+Dickey & Fuller derived the distribution for the estimator $\hat{\rho}$ that holds when $\rho = 1$ and generated statistics for an $F$-test of the random walk hypothesis, i.e. the hypothesis that $\beta = 0$ and $\rho = 1$. 
+
+\vspace{3mm}
+
+The __Dickey-Fuller Test__ works as follows, supposing
+
+\vspace{2mm}
+
+$$
+Y_{t} = \alpha + \beta t + \rho Y_{t-1} + \epsilon_{t}
+$$
+
+\vspace{2mm}
+
+First, using OLS run the (unrestricted) regression
+
+\vspace{2mm}
+
+$$
+Y_{t} - Y_{t-1} = \alpha \beta t + (\rho - 1) Y_{t-1} 
+$$
+
+\vspace{2mm}
+
+and then the (restricted) regression
+
+\vspace{2mm}
+
+$$
+Y_{t} - Y_{t-1} = \alpha
+$$
+
+
+### {-}
+
+\vspace{2mm}
+
+Then calculate the $F$-ratio
+
+\vspace{2mm}
+
+$$
+F = \frac{(SSR_{R} - SSR_{UR})}{SSR_{UR}} \frac{N-k}{q}
+$$
+
+\vspace{5mm}
+
+where $SSR_{R}$ is the sum of squared residuals of the restricted model and $SSR_{UR}$ likewise for the unrestricted model. $(N-k)$ is the degrees of freedom of the unrestricted model and $q$ is the number of restrictions placed on the restricted model.
+
+\vspace{5mm}
+
+This ratio is not distributed as a standard $F$ distribution under the null hypothesis. Instead one must use the distributions tabulated by Dickey and Fuller. 
+
+
+### {-}
+
+\vspace{2mm}
+
+__Note:__ critical values from the Dickey-Fuller distribution are much larger than for the standard $F$-distribution.
+
+\vspace{5mm}
+
+__The Augmented Dickey-Fuller Test__
+
+\vspace{3mm}
+
+The original Dickey-Fuller test implicitly makes the assumption of no serial correlation in $\epsilon_{t}$. Often we would like to allow for serial correlation in $\epsilon_{t}$ and still test for a unit root. This can be done with the augmented Dickey-Fuller test. 
+
+\vspace{8mm}
+
+This test is carried out by extending the data-generating process (DGP) to include lagged changes in $Y_{t}$ on the right-hand side:
+
+
+
+### {-}
+
+\vspace{2mm}
+
+$$
+Y_{t} = \alpha + \beta t + \rho Y_{t-1} + \sum\limits_{j=1}^{p} \lambda_{j} \Delta y_{t-j} + \epsilon_{t}
+$$
+
+\vspace{2mm}
+
+where $\Delta Y_{t} = Y_{t} - Y_{t-1}$.
+
+\vspace{4mm}
+
+The unit-root test proceeds as before: 
+
+\vspace{2mm}
+
+1. Using OLS, run the unrestricted regression
+
+\vspace{1mm}
+
+$$
+Y_{t} - Y_{t-1} = \alpha + \beta t + (\rho - 1) Y_{t-1} + \sum\limits_{j=1}^{p} \lambda_{j} Y_{t-j} 
+$$
+
+\vspace{1mm}
+
+2. And then the restricted regression
+
+\vspace{1mm}
+
+$$
+Y_{t} - Y_{t-1} = \alpha + \sum\limits_{j=1}^{p} \lambda_{j} Y_{t-j}
+$$
+
+
+### {-}
+
+\vspace{1mm}
+
+3. Form the $F$-statistic to test if the restrictions hold ($\beta = 0$ and $\rho=1$)
+
+\vspace{5mm}
+
+__Phillips-Perron Test__
+
+\vspace{2mm}
+
+Consider the following two regressions:
+
+\vspace{2mm}
+
+$$
+\begin{aligned}
+y_{t} &= \mu + \alpha y_{t-1} + \epsilon_{t} \quad \mbox{($\ast$)} \\
+& \\
+y_{t} &= \mu + \beta (t-\frac{1}{2} T) + \alpha y_{t-1} + \epsilon_{t} \quad \mbox{($\ast\ast$)}
+\end{aligned}
+$$
+
+\pagebreak
+
+<!--chapter:end:05-module3-06-time-series-4.Rmd-->
+
+## Time Series Notes V {-}
+
+\vspace{5mm}
+
+This is a placeholder. More details to come.
+
+\pagebreak
+
+<!--chapter:end:05-module3-07-time-series-5.Rmd-->
+
+# Introduction
+
+We have seen that a time series is unit-root non-stationary if for $y_t$ we have
+
+
+$$
+y_{t} = y_{t-1} + \epsilon_{t}
+$$
+
+That is a special case of an AR(1) model:
+
+$$
+y_{t} = \rho y_{t-1} + \epsilon_{t}
+$$
+
+with $\rho = 1$ (i.e. a unit root). This is also called a random walk.
+
+
+This becomes a base model for price dynamics due to the efficient markets hypothesis (EMH) and Samuelson's "proof that properly anticipated prices fluctuate randomly." 
+
+
+We also saw that we can develop a test for unit roots as follows
+
+$$
+\Delta y_{t} = \mu + \phi y_{t-1} + \epsilon_{t}
+$$
+
+where $\phi = \rho - 1$, with the following
+
+
+$$
+\begin{aligned}
+H_{0}: \phi &= 0 \\
+H_{1}: \phi &<  0 
+\end{aligned}
+$$
+
+This was called the Dickey-Fuller test, named after the two statisticians who invented it. 
+
+They subsequently also generalized the test to account for the possibility of serial correlation in the $\Delta y_{t}$ series with their Augmented Dickey-Fuller test. 
+
+
+That is given as:
+
+$$ 
+\Delta y_{t} = \mu + \sum\limits_{i=1}^{p} \delta_{i} \Delta y_{t-i} + \phi y_{t-1} + \epsilon_{t}
+$$
+
+With the same null hypothesis. Notice that the null hypothesis is that there is a unit root present. So to reject the null hypothesis is to conclude that the series is stationary (or at least not unit-root non-stationary). To fail to reject is to conclude that unit-root behavior is present. 
+
+We used the`adf.test` in the `tseries` library in R to operationalize this. It reports a $p$-value. 
+
+```{R}
+library(tseries)
+
+# simulate a random walk
+y <- cumsum(rnorm(10000))
+
+# run the Dickey-Fuller test
+adf.test(y)
+```
+
+The $p$-value is huge so we fail to reject the null (which is what we expected since we simulated a random walk process with unit-root behavior).
+
+
+## Spurious Regression
+
+We saw that when
+
+$$
+\begin{aligned}
+y_{t} &= y_{t-1} + u_{t} \\
+x_{t} &= x_{t-1} + v_{t}
+\end{aligned}
+$$
+
+with $Corr(y_{t}, x_{t}) = 0$, that is $y_{t}$ and $x_{t}$ are both unit root series, but completely independent from each other, that if we ran the following regression we will get spurious results:
+
+$$
+y_{t} = \alpha + \beta x_{t} + \epsilon_{t}
+$$
+
+We found using a Monte Carlo study that
+
+* The sampling distribution for $\hat{\beta}$, while centered at zero, was very diffuse. 
+* The sampling distribution for the $t$-statistic was ***extremely*** diffuse. 
+* The sampling distribution for the $R^{2}$ statistic had an extreme right tail.
+
+
+Let's rearrange this equation to the following:
+
+$$
+\epsilon_{t} = y_{t} - \alpha - \beta x_{t}
+$$
+
+We can see that if both $y_{t}$ and $x_{t}$ contain unit roots that we would normally expect $\epsilon_{t}$ to as well. This was the reason for the spurious regression results above. It violates the assumptions of the Guass-Markov Theorem. OLS in this situation is invalid!
+
+
+### Some Notation
+
+When a series contains a unit root we say it is integrated of order one, which we denote as 
+
+$$
+y_{t} \sim I(1)
+$$
+
+
+which is reas as: "$y_{t}$ is integrated of order one." Or simply, "$y_{t}$ is integrated."
+
+If this is the case, then first differencing should remove the unit root behavior. In other words, $\Delta y_{t} = \epsilon_{t}$ is stationary and
+
+$$
+\Delta y_{t} \sim I(0)
+$$
+
+
+There is a special case when the following regression is not spurious, but is in fact super-consistent
+
+$$
+y_{t} = \alpha + \beta x_{t} + \epsilon_{t}
+$$
+
+That is when $y_{t}$ and $x_{t}$ are each integrated, but such that they "move together" or are ***cointegrated.***
+
+
+$y_{t}$ and $x_{t}$ are cointegrated if $y_{t} \sim I(1)$ and $x_{t} \sim I(1)$, but there is a linear combination of them that is $I(0)$.
+
+
+I said in class that cointegration was the empirical footprint of arbitrage processes in financial markets (or indeed, in any market). In other words,
+it is linked to a causal economics mechanism.
+
+
+## Error Correction Models
+
+Engle and Granger showed that cointegration implies (and is implied by) an error correction model form. 
+
+Consider the following:
+
+* Let $s_{t} = y_{t} - \beta x_{t}$ (i.e. the spread)
+* If $y_t$ and $x_{t}$ are cointegrated then, $s_{t}$ is stationary.
+
+Then we can write
+
+$$
+\begin{aligned}
+\Delta y_{t} &= \mu + \sum\limits_{i=1}^{p} \delta_{i} \Delta y_{t-i} + \sum\limits_{i=1}^{p} \gamma_{i} \Delta x_{t-i} + \lambda s_{t-1} + v_{t} \\
+             &= \mu + \sum\limits_{i=1}^{p} \delta_{i} \Delta y_{t-i} + \sum\limits_{i=1}^{p} \gamma_{i} \Delta x_{t-i} + \lambda (y_{t} - \beta x_{t}) + v_{t}
+\end{aligned}
+$$
+
+Consider the model above where $\lambda < 0$. If $y_{t} > \beta x_{t}$, then $y$ in the previous period has overshot the equilibrium; because $\lambda < 0$, the error correction
+term works to make sure that the subsequent change in $y$ ($\Delta y_{t}$) is downward (back towards the equilibrium). Just the opposite would happen if $y_{t} < \beta x_{t}$.
+
+
+### The Engle-Granger Two-Step Method
+
+The above leads to the Engle-Granger two-step method:
+
+* Step 1: regression $y_{t}$ on $x_{t}$: $\quad \quad y_{t} = \alpha + \beta x_{t} + \epsilon_{t}$
+    - Get the estimated residuals $\hat{\epsilon_{t}}$
+    - Use $\hat{\epsilon_{t}}$ to test for a unit root with the ADF test.
+    - If the null is rejected, then $y_{t}$ and $x_{t}$ are cointegrated.
+    
+* Step 2: Set $s_{t} = \hat{\epsilon_{t}}$ and run the following regression
+
+$$
+\Delta y_{t} = \mu + \sum\limits_{i=1}^{p} \delta_{i} \Delta y_{t-i} + \sum\limits_{i=1}^{p} \gamma_{i} \Delta x_{t-i} + \lambda s_{t-1} + v_{t}
+$$
+
+via OLS. Interpret the estimate $\hat{\lambda}$ as the error-correction parameter, which measures the speed of convergence to equilibrium.
+
+
+
+<!--chapter:end:05-module3-08-cointegration-and-error-correction.Rmd-->
+
+## The Pairs Trading Project {-}
+
+\vspace{5mm}
+
+### Project Description {-}
+
+This project is based on the research article *Illuminating the
+Profitability of Pairs Trading: A Test of the Relative Pricing
+Efficiency of Markets for Water Utility Stocks* by @GutierrezTse2011
+(GT). GT examine the profitability of the basic pairs trading strategy.
+This strategy relies on identifying pairs of assets that are
+cointegrated. GT study stocks in the water utility industry in the hopes
+that pairs of them will be cointegrated.
+
+\vspace{3mm}
+
+Your assignment is to reproduce Exhibit 2 Panel A and Panel B, as well
+as Exhibit 3 (all panels) for three stocks that they choose. The
+deliverable is a Jupyter notebook with Python (or R, Julia, or
+whatever) code that carries out the calculations. You should make tables
+of the results in your document and write several paragraphs of prose to
+explain the results.
+
+\vspace{3mm}
+
+This project does not require you to carry out the analysis for the
+actual trading strategy. Instead, you are required to discuss how the
+results you found in your analysis of cointegration and error-correction
+enable you to form such strategies. Outline a strategy of how you would
+use the predictive analytics and statistical foundation from your analysis to set up and carry
+out pairs trading strategies in real life. What factors need to be
+considered when going from predictive models to real life trading? What
+data, systems, or other factors need to be considered? How does having
+an predictive analytics foundation aid the process? What other machine learning or
+econometric methods or procedures would aid your plan? What concerns
+about the process do you forsee as the portfolio manager?
+
+\pagebreak
+
+<!--chapter:end:05-module3-09-pairs-trading.Rmd-->
+
+## The Stationary Bootstrap {-}
+
+\vspace{5mm}
+
+This is a placeholder. More details to come.
+
+\pagebreak
+
+<!--chapter:end:05-module3-10-stationary-bootstrap.Rmd-->
+
+## The Superior Predictive Ability Test {-}
+
+\vspace{5mm}
+
+This is a placeholder. More details to come.
+
+\pagebreak
+
+<!--chapter:end:05-module3-11-super-predictive-ability-test.Rmd-->
+
+## The Stock Returns Prediction Project {-}
+
+\vspace{5mm}
+
+### Project Description {-}
+
+This is your final project for the course. It is based on _Chapter 6: Model Selection_
+in @ElliottTimmermann2013. You will use the stock return prediction dataset linked
+below from the paper @WelchGoyal2008. See in particular Table 6.2 in @ElliottTimmermann2013.
+Your task is to reproduce this table (with modifications that we will discuss in class).
+The assignment is to come up with a model that has the optimal predictive power. 
+
+\vspace{3mm}
+
+In addition the methods discussed in Chapter 6 above, you will need to implement the _Superior
+Predictive Test_ (SPA) due to @Hansen2005. You will reproduce the SPA analysis for power utility
+investors with $\gamma = (2, 5, 9)$. See the Chapter 8 of @LjungqvistSargent2018 for the specification of
+the power utility function.
+
+\vspace{3mm}
+
+The deliverable for the project will be a zip drive with code files, data files, and a final write-up that 
+explains your results. Your results must be reproducible. 
+
+\vspace{3mm}
+
+- See here for the original [Welch and Goyal](https://drive.google.com/file/d/1T0pCslc2vxMDt7EFGI0MJ6mndeQvObBT/view?usp=sharing) dataset. 
+
+- See here for the [Welch and Goyal](https://drive.google.com/file/d/1uvjBJ9D09T0_sp7kQppWpD-xelJ0KQhc/view?usp=sharing) paper.  
+
+\pagebreak
+
+<!--chapter:end:05-module3-12-stock-returns.Rmd-->
+
+# Module 4: Reinforcement Learning {-}
+
+In this module we will be introduced the basic ideas of reinforcement learning through multi-armed bandit problems. This area of machine learning is explicitly related to the economics of decision making under conditions of uncertainty through the two subjects' common roots in game theory. 
+
+\pagebreak
+
+<!--chapter:end:06-module4-00-intro.Rmd-->
+
+## Readings {-}
+
+\vspace{5mm}
+
+### Textbook Readings {-}
+
+Please read the chapters from the different sources listed below. All of these sources are available on the course Canvas Files page.
+
+\vspace{10mm}
+
+### Academic Journal Articles {-}
+
+Please prepare an entry in your annotated bibliography for each of the following articles.
+
+\pagebreak
+
+<!--chapter:end:06-module4-01-readings.Rmd-->
+
+## Student Presentation Schedule {-}
+
+\vspace{5mm}
+
+This is a placeholder. More details to come.
+
+\pagebreak
+
+<!--chapter:end:06-module4-02-schedule.Rmd-->
+
+## Schedule of Due Dates {-}
+
+\vspace{5mm}
+
+This is a placeholder. More details to come.
+
+\pagebreak
+
+<!--chapter:end:06-module4-03-due-dates.Rmd-->
+
+## The Auction Reserve Price Simulation Project {-}
+
+This is a placeholder for the keyword auction simulation project. More details to come.
+
+\pagebreak
+
+<!--chapter:end:06-module4-04-auction-simulator.Rmd-->
+
+# Glossary of Terms {-}
+
+This is a placeholder for the glossary of terms. More details to come. 
+
+\pagebreak
+
+<!--chapter:end:07-glossary.Rmd-->
+

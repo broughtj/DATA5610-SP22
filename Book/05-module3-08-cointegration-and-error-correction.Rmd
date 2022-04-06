@@ -1,0 +1,172 @@
+# Introduction
+
+We have seen that a time series is unit-root non-stationary if for $y_t$ we have
+
+
+$$
+y_{t} = y_{t-1} + \epsilon_{t}
+$$
+
+That is a special case of an AR(1) model:
+
+$$
+y_{t} = \rho y_{t-1} + \epsilon_{t}
+$$
+
+with $\rho = 1$ (i.e. a unit root). This is also called a random walk.
+
+
+This becomes a base model for price dynamics due to the efficient markets hypothesis (EMH) and Samuelson's "proof that properly anticipated prices fluctuate randomly." 
+
+
+We also saw that we can develop a test for unit roots as follows
+
+$$
+\Delta y_{t} = \mu + \phi y_{t-1} + \epsilon_{t}
+$$
+
+where $\phi = \rho - 1$, with the following
+
+
+$$
+\begin{aligned}
+H_{0}: \phi &= 0 \\
+H_{1}: \phi &<  0 
+\end{aligned}
+$$
+
+This was called the Dickey-Fuller test, named after the two statisticians who invented it. 
+
+They subsequently also generalized the test to account for the possibility of serial correlation in the $\Delta y_{t}$ series with their Augmented Dickey-Fuller test. 
+
+
+That is given as:
+
+$$ 
+\Delta y_{t} = \mu + \sum\limits_{i=1}^{p} \delta_{i} \Delta y_{t-i} + \phi y_{t-1} + \epsilon_{t}
+$$
+
+With the same null hypothesis. Notice that the null hypothesis is that there is a unit root present. So to reject the null hypothesis is to conclude that the series is stationary (or at least not unit-root non-stationary). To fail to reject is to conclude that unit-root behavior is present. 
+
+We used the`adf.test` in the `tseries` library in R to operationalize this. It reports a $p$-value. 
+
+```{R}
+library(tseries)
+
+# simulate a random walk
+y <- cumsum(rnorm(10000))
+
+# run the Dickey-Fuller test
+adf.test(y)
+```
+
+The $p$-value is huge so we fail to reject the null (which is what we expected since we simulated a random walk process with unit-root behavior).
+
+
+## Spurious Regression
+
+We saw that when
+
+$$
+\begin{aligned}
+y_{t} &= y_{t-1} + u_{t} \\
+x_{t} &= x_{t-1} + v_{t}
+\end{aligned}
+$$
+
+with $Corr(y_{t}, x_{t}) = 0$, that is $y_{t}$ and $x_{t}$ are both unit root series, but completely independent from each other, that if we ran the following regression we will get spurious results:
+
+$$
+y_{t} = \alpha + \beta x_{t} + \epsilon_{t}
+$$
+
+We found using a Monte Carlo study that
+
+* The sampling distribution for $\hat{\beta}$, while centered at zero, was very diffuse. 
+* The sampling distribution for the $t$-statistic was ***extremely*** diffuse. 
+* The sampling distribution for the $R^{2}$ statistic had an extreme right tail.
+
+
+Let's rearrange this equation to the following:
+
+$$
+\epsilon_{t} = y_{t} - \alpha - \beta x_{t}
+$$
+
+We can see that if both $y_{t}$ and $x_{t}$ contain unit roots that we would normally expect $\epsilon_{t}$ to as well. This was the reason for the spurious regression results above. It violates the assumptions of the Guass-Markov Theorem. OLS in this situation is invalid!
+
+
+### Some Notation
+
+When a series contains a unit root we say it is integrated of order one, which we denote as 
+
+$$
+y_{t} \sim I(1)
+$$
+
+
+which is reas as: "$y_{t}$ is integrated of order one." Or simply, "$y_{t}$ is integrated."
+
+If this is the case, then first differencing should remove the unit root behavior. In other words, $\Delta y_{t} = \epsilon_{t}$ is stationary and
+
+$$
+\Delta y_{t} \sim I(0)
+$$
+
+
+There is a special case when the following regression is not spurious, but is in fact super-consistent
+
+$$
+y_{t} = \alpha + \beta x_{t} + \epsilon_{t}
+$$
+
+That is when $y_{t}$ and $x_{t}$ are each integrated, but such that they "move together" or are ***cointegrated.***
+
+
+$y_{t}$ and $x_{t}$ are cointegrated if $y_{t} \sim I(1)$ and $x_{t} \sim I(1)$, but there is a linear combination of them that is $I(0)$.
+
+
+I said in class that cointegration was the empirical footprint of arbitrage processes in financial markets (or indeed, in any market). In other words,
+it is linked to a causal economics mechanism.
+
+
+## Error Correction Models
+
+Engle and Granger showed that cointegration implies (and is implied by) an error correction model form. 
+
+Consider the following:
+
+* Let $s_{t} = y_{t} - \beta x_{t}$ (i.e. the spread)
+* If $y_t$ and $x_{t}$ are cointegrated then, $s_{t}$ is stationary.
+
+Then we can write
+
+$$
+\begin{aligned}
+\Delta y_{t} &= \mu + \sum\limits_{i=1}^{p} \delta_{i} \Delta y_{t-i} + \sum\limits_{i=1}^{p} \gamma_{i} \Delta x_{t-i} + \lambda s_{t-1} + v_{t} \\
+             &= \mu + \sum\limits_{i=1}^{p} \delta_{i} \Delta y_{t-i} + \sum\limits_{i=1}^{p} \gamma_{i} \Delta x_{t-i} + \lambda (y_{t} - \beta x_{t}) + v_{t}
+\end{aligned}
+$$
+
+Consider the model above where $\lambda < 0$. If $y_{t} > \beta x_{t}$, then $y$ in the previous period has overshot the equilibrium; because $\lambda < 0$, the error correction
+term works to make sure that the subsequent change in $y$ ($\Delta y_{t}$) is downward (back towards the equilibrium). Just the opposite would happen if $y_{t} < \beta x_{t}$.
+
+
+### The Engle-Granger Two-Step Method
+
+The above leads to the Engle-Granger two-step method:
+
+* Step 1: regression $y_{t}$ on $x_{t}$: $\quad \quad y_{t} = \alpha + \beta x_{t} + \epsilon_{t}$
+    - Get the estimated residuals $\hat{\epsilon_{t}}$
+    - Use $\hat{\epsilon_{t}}$ to test for a unit root with the ADF test.
+    - If the null is rejected, then $y_{t}$ and $x_{t}$ are cointegrated.
+    
+* Step 2: Set $s_{t} = \hat{\epsilon_{t}}$ and run the following regression
+
+$$
+\Delta y_{t} = \mu + \sum\limits_{i=1}^{p} \delta_{i} \Delta y_{t-i} + \sum\limits_{i=1}^{p} \gamma_{i} \Delta x_{t-i} + \lambda s_{t-1} + v_{t}
+$$
+
+via OLS. Interpret the estimate $\hat{\lambda}$ as the error-correction parameter, which measures the speed of convergence to equilibrium.
+
+
